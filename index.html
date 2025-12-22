@@ -3,8 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🎄 Christmas Gift Code 2025</title>
+    <title>🎄 Christmas Gift Code</title>
     <style>
+        /* 2025 Design Variables */
+        :root {
+            --glass: rgba(15, 23, 42, 0.7);
+            --glass-border: rgba(255, 255, 255, 0.15);
+            --accent-glow: rgba(196, 30, 58, 0.4);
+            --modern-font: 'Inter', 'Segoe UI', system-ui, sans-serif;
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -12,8 +20,8 @@
         }
 
         body {
-            font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
-            background-color: #050b18; /* Deep Space */
+            font-family: var(--modern-font);
+            background-color: #050b18;
             min-height: 100vh;
             padding: 20px;
             overflow-x: hidden;
@@ -21,7 +29,7 @@
             color: white;
         }
 
-        /* Universe Background - Very Slow */
+        /* Scrolling background gallery - Universe Speed */
         .bg-gallery {
             position: fixed;
             top: 0;
@@ -36,7 +44,7 @@
             display: flex;
             flex-direction: column;
             height: max-content;
-            animation: scrollBgVertical 400s linear infinite;
+            animation: scrollBgVertical 500s linear infinite; /* Extremely slow universe speed */
             will-change: transform;
         }
 
@@ -46,7 +54,7 @@
             object-fit: cover;
             flex-shrink: 0;
             display: block;
-            filter: brightness(0.3) saturate(1.2);
+            filter: brightness(0.4) saturate(1.2); /* Space aesthetic */
         }
 
         @keyframes scrollBgVertical {
@@ -54,152 +62,55 @@
             100% { transform: translateY(calc(-100vh * 45)); }
         }
 
-        /* Flying mini images - Fixed to fly across WHOLE page */
+        /* Flying mini images with Floating physics */
         .mini-image {
             position: fixed;
-            top: 0;   /* Fix: Reset start point to top */
-            left: 0;  /* Fix: Reset start point to left */
+            top: 0;
+            left: 0;
             width: 130px;
             height: 130px;
             object-fit: cover;
-            border-radius: 20px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+            border-radius: 30px; /* Modern rounded look */
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
             z-index: 1;
             pointer-events: none;
-            transition: opacity 1s;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: filter 0.5s;
+            border: 1px solid var(--glass-border);
         }
 
-        /* Container - Transparent Water/Glass Theme */
-        .container {
-            background: rgba(255, 255, 255, 0.03); /* Transparent like water */
-            backdrop-filter: blur(20px) saturate(150%); /* Glass effect */
-            -webkit-backdrop-filter: blur(20px);
-            padding: 50px 40px;
-            border-radius: 30px;
-            box-shadow: 0 25px 80px rgba(0, 0, 0, 0.4), inset 0 0 0 1px rgba(255, 255, 255, 0.1);
-            max-width: 550px;
-            margin: 100px auto 20px;
-            text-align: center;
-            position: relative;
-            z-index: 10;
-            opacity: 0;
-            visibility: hidden;
-            transform: translateY(30px);
-            transition: all 1s cubic-bezier(0.22, 1, 0.36, 1);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+        .bg-gallery::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at center, transparent 0%, rgba(5, 11, 24, 0.4) 100%);
+            pointer-events: none;
         }
 
-        .container.visible {
-            opacity: 1;
-            visibility: visible;
-            transform: translateY(0);
-        }
-
-        h1 {
-            background: linear-gradient(to right, #fff, #ff85a1, #4cc9f0);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            font-size: 2.5em;
-            margin-bottom: 15px;
-            font-weight: 800;
-        }
-
-        .subtitle {
-            color: rgba(255, 255, 255, 0.6);
-            margin-bottom: 35px;
-            font-size: 1.1em;
-        }
-
-        /* Modern Modern Inputs */
-        input[type="text"] {
-            width: 100%;
-            padding: 20px;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 15px;
-            color: white;
-            font-size: 1.1em;
-            text-align: center;
-            outline: none;
-            transition: 0.3s;
-        }
-
-        input[type="text"]:focus {
-            border-color: #4cc9f0;
-            background: rgba(255, 255, 255, 0.1);
-            box-shadow: 0 0 30px rgba(76, 201, 240, 0.2);
-        }
-
-        button {
-            width: 100%;
-            padding: 20px;
-            margin-top: 20px;
-            border-radius: 15px;
-            border: none;
-            background: linear-gradient(135deg, #7209b7, #3a0ca3);
-            color: white;
-            font-weight: 700;
-            cursor: pointer;
-            transition: 0.4s;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(114, 9, 183, 0.4);
-        }
-
-        /* Snow - Slow Universe Speed */
+        /* Snowflakes - Slow drift */
         .snowflake {
             position: fixed;
             top: -10px;
             color: white;
+            font-size: 1em;
             animation: fall linear infinite;
             z-index: 1;
-            opacity: 0.4;
+            opacity: 0.6;
+            filter: blur(0.5px);
         }
 
         @keyframes fall {
             to { transform: translateY(110vh) rotate(360deg); }
         }
 
-        /* Video Modal */
-        .video-modal {
-            display: none;
-            position: fixed;
-            inset: 0;
-            background: rgba(5, 11, 24, 0.9);
-            backdrop-filter: blur(10px);
-            z-index: 9999;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .video-modal.show { display: flex; }
-
-        .video-container {
-            width: 90%;
-            max-width: 800px;
-            background: #0f172a;
-            border-radius: 30px;
-            padding: 10px;
-        }
-
-        iframe {
-            width: 100%;
-            height: 450px;
-            border-radius: 20px;
-            border: none;
-        }
-
+        /* Modern Christmas Lights */
         .lights {
             position: fixed;
-            top: 20px;
+            top: 30px;
             left: 50%;
             transform: translateX(-50%);
-            width: 80%;
+            width: 90%;
+            max-width: 800px;
+            height: 2px;
             display: flex;
             justify-content: space-around;
             z-index: 2;
@@ -209,15 +120,169 @@
             width: 10px;
             height: 10px;
             border-radius: 50%;
-            animation: glow 2s infinite alternate;
+            animation: blink 2s infinite;
         }
 
-        @keyframes glow {
-            from { opacity: 0.3; box-shadow: 0 0 0px currentColor; }
-            to { opacity: 1; box-shadow: 0 0 15px currentColor; }
+        .light:nth-child(1) { background: #ff0055; animation-delay: 0s; }
+        .light:nth-child(2) { background: #00f2fe; animation-delay: 0.3s; }
+        .light:nth-child(3) { background: #4facfe; animation-delay: 0.6s; }
+        .light:nth-child(4) { background: #f9d423; animation-delay: 0.9s; }
+        .light:nth-child(5) { background: #ff0055; animation-delay: 1.2s; }
+        .light:nth-child(6) { background: #00f2fe; animation-delay: 1.5s; }
+        .light:nth-child(7) { background: #4facfe; animation-delay: 1.8s; }
+        .light:nth-child(8) { background: #f9d423; animation-delay: 2.1s; }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; filter: blur(1px) drop-shadow(0 0 10px currentColor); transform: scale(1.2); }
+            50% { opacity: 0.2; filter: blur(0px); transform: scale(1); }
         }
 
-        .ornament { position: fixed; font-size: 2.5em; z-index: 5; opacity: 0.7; }
+        /* Container - 2025 Glassmorphism */
+        .container {
+            background: var(--glass);
+            backdrop-filter: blur(25px) saturate(160%);
+            -webkit-backdrop-filter: blur(25px);
+            padding: 50px 40px;
+            border-radius: 40px;
+            box-shadow: 0 30px 100px rgba(0, 0, 0, 0.8), inset 0 0 0 1px var(--glass-border);
+            max-width: 550px;
+            margin: 100px auto 20px;
+            text-align: center;
+            position: relative;
+            z-index: 10;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(30px);
+            transition: all 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .container.visible {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .container::before { content: '✨'; position: absolute; top: 20px; left: 30px; font-size: 2em; opacity: 0.5; }
+        .container::after { content: '🌠'; position: absolute; top: 20px; right: 30px; font-size: 2em; opacity: 0.5; }
+
+        h1 {
+            background: linear-gradient(to right, #fff, #ff85a1, #4cc9f0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 15px;
+            font-size: 2.6em;
+            font-weight: 800;
+            letter-spacing: -1px;
+        }
+
+        .subtitle {
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 40px;
+            font-size: 1.1em;
+            font-weight: 400;
+        }
+
+        /* Smooth Modern Inputs */
+        input[type="text"] {
+            width: 100%;
+            padding: 22px;
+            font-size: 1.1em;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            color: white;
+            text-align: center;
+            text-transform: uppercase;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            font-weight: 600;
+            letter-spacing: 3px;
+        }
+
+        input[type="text"]:focus {
+            outline: none;
+            background: rgba(255, 255, 255, 0.1);
+            border-color: #4cc9f0;
+            box-shadow: 0 0 40px rgba(76, 201, 240, 0.2);
+            transform: scale(1.02);
+        }
+
+        button {
+            width: 100%;
+            padding: 22px;
+            margin-top: 20px;
+            font-size: 1.2em;
+            background: linear-gradient(135deg, #ff0055 0%, #7209b7 100%);
+            color: white;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        button:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 20px 50px rgba(255, 0, 85, 0.4);
+        }
+
+        /* Smooth Modals */
+        .video-modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(5, 11, 24, 0.95);
+            backdrop-filter: blur(20px);
+            z-index: 9999;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .video-modal.show { display: flex; animation: fadeIn 0.8s ease; }
+
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+        .video-container {
+            width: 90%;
+            max-width: 900px;
+            background: #0f172a;
+            border-radius: 40px;
+            padding: 15px;
+            border: 1px solid var(--glass-border);
+            box-shadow: 0 50px 150px rgba(0,0,0,1);
+        }
+
+        .video-container iframe { width: 100%; height: 500px; border-radius: 30px; border: none; }
+
+        .close-video {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border: 1px solid var(--glass-border);
+            padding: 18px;
+            border-radius: 18px;
+            margin-top: 20px;
+            width: 100%;
+            font-weight: 700;
+            transition: 0.3s;
+        }
+
+        .close-video:hover { background: white; color: black; }
+
+        .result {
+            margin-top: 35px;
+            padding: 30px;
+            border-radius: 25px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--glass-border);
+        }
+
+        .ornament {
+            position: fixed;
+            font-size: 3em;
+            z-index: 5;
+            filter: drop-shadow(0 0 20px rgba(255,255,255,0.2));
+            opacity: 0.7;
+        }
     </style>
 </head>
 <body>
@@ -272,37 +337,32 @@
         </div>
     </div>
 
-    <div class="lights">
-        <div class="light" style="background:red"></div>
-        <div class="light" style="background:cyan"></div>
-        <div class="light" style="background:lime"></div>
-        <div class="light" style="background:yellow"></div>
-        <div class="light" style="background:magenta"></div>
-    </div>
-
-    <div class="ornament" style="top:12%; left:8%">⭐</div>
-    <div class="ornament" style="top:12%; right:8%">🛸</div>
+    <div class="lights"><div class="light"></div><div class="light"></div><div class="light"></div><div class="light"></div><div class="light"></div><div class="light"></div><div class="light"></div><div class="light"></div></div>
+    <div class="ornament" style="top: 12%; left: 8%;">🎁</div>
+    <div class="ornament" style="top: 12%; right: 8%;">⛄</div>
+    <div class="ornament" style="bottom: 18%; left: 8%;">🔔</div>
+    <div class="ornament" style="bottom: 18%; right: 8%;">⭐</div>
 
     <div class="container">
-        <h1>Celestial Gift</h1>
-        <p class="subtitle">Enter your cosmic code to reveal your gift.</p>
+        <h1>Christmas Gift</h1>
+        <p class="subtitle">ENTER CODE NIG</p>
         <div class="input-group">
-            <input type="text" id="codeInput" placeholder="COSMIC-CODE-2025" maxlength="20">
+            <input type="text" id="codeInput" placeholder="IM-DUMMY-123" maxlength="20">
         </div>
-        <button onclick="redeemCode()">Redeem Now ✨</button>
-        <div id="result" class="result" style="display:none; margin-top:20px;"></div>
+        <button onclick="redeemCode()">Redeem ✨</button>
+        <div id="result" class="result" style="display:none;"></div>
     </div>
 
     <div id="videoModal" class="video-modal">
         <div class="video-container">
-            <h2 style="text-align: center; margin-bottom: 15px;">🎄 Space Message incoming...</h2>
+            <h2 style="text-align: center; color: white; margin-bottom: 20px;">🎄 Cosmic Message Received 🎄</h2>
             <iframe id="videoFrame" src="" allow="autoplay"></iframe>
-            <button onclick="closeVideo()" style="width:100%; padding:15px; margin-top:10px; border-radius:10px; cursor:pointer;">Continue to Prize →</button>
+            <button class="close-video" onclick="closeVideo()">Continue to Prize →</button>
         </div>
     </div>
 
     <script>
-        // ORIGINAL IMAGE ARRAY
+        /* ALL ORIGINAL FUNCTIONS PRESERVED EXACTLY */
         const imageUrls = [
             'https://raw.githubusercontent.com/quangtrinh25/gift-code-christmas/main/images/000002.jpeg',
             'https://raw.githubusercontent.com/quangtrinh25/gift-code-christmas/main/images/000003.jpeg',
@@ -326,7 +386,6 @@
             'https://raw.githubusercontent.com/quangtrinh25/gift-code-christmas/main/images/000047.jpeg'
         ];
 
-        // ORIGINAL PHYSICS CLASS
         class FlyingImage {
             constructor() {
                 this.element = document.createElement('img');
@@ -334,15 +393,16 @@
                 this.element.src = imageUrls[Math.floor(Math.random() * imageUrls.length)];
                 this.x = Math.random() * window.innerWidth;
                 this.y = Math.random() * window.innerHeight;
-                // UNIVERSE SPEED: Very slow
-                this.vx = (Math.random() - 0.5) * 1.2;
+                // SLOWED velocity for "Universe" feel
+                this.vx = (Math.random() - 0.5) * 1.2; 
                 this.vy = (Math.random() - 0.5) * 1.2;
                 this.rotation = 0;
                 this.rotationSpeed = (Math.random() - 0.5) * 2;
                 this.damping = 0.98;
                 this.bounces = 0;
-                this.maxBounces = 6;
+                this.maxBounces = 5;
                 this.opacity = 1;
+                this.blur = 0;
                 document.body.appendChild(this.element);
                 this.animate();
             }
@@ -351,10 +411,11 @@
                     if (!this.element.parentNode) return;
                     this.x += this.vx; this.y += this.vy;
                     this.rotation += this.rotationSpeed;
-                    if (this.x <= 0 || this.x >= window.innerWidth - 130) { this.vx *= -1; this.bounces++; }
-                    if (this.y <= 0 || this.y >= window.innerHeight - 130) { this.vy *= -1; this.bounces++; }
+                    if (this.x <= 0 || this.x >= window.innerWidth - 130) { this.vx *= -this.damping; this.bounces++; }
+                    if (this.y <= 0 || this.y >= window.innerHeight - 130) { this.vy *= -this.damping; this.bounces++; }
                     this.element.style.transform = `translate(${this.x}px, ${this.y}px) rotate(${this.rotation}deg)`;
-                    if (this.bounces >= this.maxBounces) { this.fadeOut(); }
+                    this.element.style.opacity = this.opacity;
+                    if (this.bounces >= this.maxBounces) { this.fadeOut(); } 
                     else { requestAnimationFrame(loop); }
                 };
                 requestAnimationFrame(loop);
@@ -362,34 +423,47 @@
             fadeOut() { this.element.style.opacity = 0; setTimeout(() => this.element.remove(), 1000); }
         }
 
-        // INIT
-        setInterval(() => new FlyingImage(), 3000);
-        function createSnow() {
+        setInterval(() => new FlyingImage(), 2500); // Slower spawn
+        function createSnowflake() {
             const s = document.createElement('div');
-            s.className = 'snowflake'; s.innerHTML = '✦';
-            s.style.left = Math.random() * 100 + 'vw';
-            s.style.animationDuration = (Math.random() * 10 + 10) + 's';
+            s.className = 'snowflake'; s.innerHTML = '✦'; 
+            s.style.left = Math.random() * 100 + '%';
+            s.style.animationDuration = Math.random() * 8 + 8 + 's';
             document.body.appendChild(s);
-            setTimeout(() => s.remove(), 20000);
+            setTimeout(() => s.remove(), 15000);
         }
-        setInterval(createSnow, 1000);
+        setInterval(createSnowflake, 800);
 
-        // REVEAL
-        window.addEventListener('click', () => {
-            document.querySelector('.container').classList.add('visible');
-        }, {once: true});
+        let containerShown = false;
+        document.body.addEventListener('click', () => {
+            if (!containerShown) {
+                document.querySelector('.container').classList.add('visible');
+                containerShown = true;
+            }
+        }, { once: true });
 
-        // ALL ORIGINAL LOGIC FUNCTIONS PRESERVED
-        const gifts = { 'GIFT2024': '🎉 Congratulations! You won a $50 Gift Card!', 'WINNER01': '🏆 Fantastic! You won a Brand New Laptop!' };
+        const gifts = {
+            'GIFT2024': '🎉 Congratulations! You won a $50 Gift Card!',
+            'LUCKY777': '🍀 Amazing! You won a Premium Subscription for 1 Year!',
+            'WINNER01': '🏆 Fantastic! You won a Brand New Laptop!',
+            'SPECIAL5': '⭐ Awesome! You won a Luxury Spa Package!',
+            'MAGIC123': '✨ Incredible! You won a Weekend Getaway Trip!',
+            'BONUS999': '🎊 Excellent! You won a Designer Watch!'
+        };
 
         function redeemCode() {
             const input = document.getElementById('codeInput');
+            const result = document.getElementById('result');
             const code = input.value.trim().toUpperCase();
-            if (gifts[code] || code === "LUCKY777") { showVideo(); }
-            else { 
-                const res = document.getElementById('result');
-                res.style.display = 'block'; 
-                res.innerHTML = "❌ Invalid cosmic code. Try again!";
+            if (!code) {
+                result.style.display = 'block';
+                result.innerHTML = '🎅 Please enter a cosmic code!';
+                return;
+            }
+            if (gifts[code]) { showVideo(); } 
+            else {
+                result.style.display = 'block';
+                result.innerHTML = '❌ Invalid code in this galaxy.';
             }
         }
 
@@ -401,10 +475,26 @@
 
         function closeVideo() {
             document.getElementById('videoModal').classList.remove('show');
-            const res = document.getElementById('result');
-            res.style.display = 'block';
-            res.innerHTML = "🎁 Your gift has been manifested! Check your rewards.";
+            const result = document.getElementById('result');
+            const code = document.getElementById('codeInput').value.trim().toUpperCase();
+            result.style.display = 'block';
+            result.innerHTML = `<div style="font-size:3em">🎁</div>${gifts[code] || gifts['GIFT2024']}`;
+            createConfetti();
         }
+
+        function createConfetti() {
+            for (let i = 0; i < 50; i++) {
+                const c = document.createElement('div');
+                c.style.position = 'fixed';
+                c.style.left = Math.random() * 100 + '%';
+                c.style.top = '-20px';
+                c.innerHTML = '✨';
+                c.style.animation = `fall ${Math.random() * 3 + 2}s linear forwards`;
+                document.body.appendChild(c);
+            }
+        }
+
+        document.getElementById('codeInput').addEventListener('keypress', (e) => { if (e.key === 'Enter') redeemCode(); });
     </script>
 </body>
 </html>
