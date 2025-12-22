@@ -11,14 +11,24 @@
             box-sizing: border-box;
         }
 
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #0a1628 0%, #1a2f3f 50%, #2d4a5c 100%);
-            min-height: 100vh;
-            padding: 20px;
-            overflow-x: hidden;
-            position: relative;
-        }
+       body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    
+    /* Use your uploaded image */
+    background-image: url('https://raw.githubusercontent.com/quangtrinh25/gift-code-christmas/main/images/000046.jpeg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    
+    /* Comment out or remove the gradient */
+    /* background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); */
+    
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
 
         body::before {
             content: '';
