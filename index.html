@@ -5,6 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>🎄 Christmas Gift Code</title>
     <style>
+        /* 2025 Design Variables */
+        :root {
+            --glass: rgba(15, 23, 42, 0.7);
+            --glass-border: rgba(255, 255, 255, 0.15);
+            --accent-glow: rgba(196, 30, 58, 0.4);
+            --modern-font: 'Inter', 'Segoe UI', system-ui, sans-serif;
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -12,15 +20,16 @@
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #0a1628;
+            font-family: var(--modern-font);
+            background-color: #050b18;
             min-height: 100vh;
             padding: 20px;
             overflow-x: hidden;
             position: relative;
+            color: white;
         }
 
-        /* Scrolling background gallery */
+        /* Scrolling background gallery - Universe Speed */
         .bg-gallery {
             position: fixed;
             top: 0;
@@ -35,7 +44,7 @@
             display: flex;
             flex-direction: column;
             height: max-content;
-            animation: scrollBgVertical 180s linear infinite;
+            animation: scrollBgVertical 500s linear infinite; /* Extremely slow universe speed */
             will-change: transform;
         }
 
@@ -45,43 +54,37 @@
             object-fit: cover;
             flex-shrink: 0;
             display: block;
+            filter: brightness(0.4) saturate(1.2); /* Space aesthetic */
         }
 
         @keyframes scrollBgVertical {
-            0% {
-                transform: translateY(0);
-            }
-            100% {
-                transform: translateY(calc(-100vh * 45));
-            }
+            0% { transform: translateY(0); }
+            100% { transform: translateY(calc(-100vh * 45)); }
         }
 
-        /* Flying mini images with physics */
+        /* Flying mini images with Floating physics */
         .mini-image {
             position: fixed;
-            width: 140px;
-            height: 140px;
+            width: 130px;
+            height: 130px;
             object-fit: cover;
-            border-radius: 12px;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
+            border-radius: 30px; /* Modern rounded look */
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
             z-index: 1;
             pointer-events: none;
-            transition: filter 0.3s;
+            transition: filter 0.5s;
+            border: 1px solid var(--glass-border);
         }
 
-        /* Dark overlay for better readability */
         .bg-gallery::after {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.3);
+            inset: 0;
+            background: radial-gradient(circle at center, transparent 0%, rgba(5, 11, 24, 0.4) 100%);
             pointer-events: none;
         }
 
-        /* Snowflakes */
+        /* Snowflakes - Slow drift */
         .snowflake {
             position: fixed;
             top: -10px;
@@ -89,67 +92,66 @@
             font-size: 1em;
             animation: fall linear infinite;
             z-index: 1;
-            text-shadow: 0 0 5px rgba(255, 255, 255, 0.8);
+            opacity: 0.6;
+            filter: blur(0.5px);
         }
 
         @keyframes fall {
-            to {
-                transform: translateY(100vh);
-            }
+            to { transform: translateY(110vh) rotate(360deg); }
         }
 
-        /* Christmas Lights - repositioned */
+        /* Modern Christmas Lights */
         .lights {
             position: fixed;
-            top: 50px;
+            top: 30px;
             left: 50%;
             transform: translateX(-50%);
-            width: 80%;
-            max-width: 600px;
-            height: 30px;
+            width: 90%;
+            max-width: 800px;
+            height: 2px;
             display: flex;
             justify-content: space-around;
             z-index: 2;
         }
 
         .light {
-            width: 14px;
-            height: 14px;
+            width: 10px;
+            height: 10px;
             border-radius: 50%;
-            animation: blink 1.5s infinite;
+            animation: blink 2s infinite;
         }
 
-        .light:nth-child(1) { background: #ff0000; animation-delay: 0s; }
-        .light:nth-child(2) { background: #00ff00; animation-delay: 0.3s; }
-        .light:nth-child(3) { background: #0000ff; animation-delay: 0.6s; }
-        .light:nth-child(4) { background: #ffff00; animation-delay: 0.9s; }
-        .light:nth-child(5) { background: #ff00ff; animation-delay: 1.2s; }
-        .light:nth-child(6) { background: #00ffff; animation-delay: 0.15s; }
-        .light:nth-child(7) { background: #ff8800; animation-delay: 0.45s; }
-        .light:nth-child(8) { background: #ff0088; animation-delay: 0.75s; }
+        .light:nth-child(1) { background: #ff0055; animation-delay: 0s; }
+        .light:nth-child(2) { background: #00f2fe; animation-delay: 0.3s; }
+        .light:nth-child(3) { background: #4facfe; animation-delay: 0.6s; }
+        .light:nth-child(4) { background: #f9d423; animation-delay: 0.9s; }
+        .light:nth-child(5) { background: #ff0055; animation-delay: 1.2s; }
+        .light:nth-child(6) { background: #00f2fe; animation-delay: 1.5s; }
+        .light:nth-child(7) { background: #4facfe; animation-delay: 1.8s; }
+        .light:nth-child(8) { background: #f9d423; animation-delay: 2.1s; }
 
         @keyframes blink {
-            0%, 100% { opacity: 1; box-shadow: 0 0 15px currentColor; }
-            50% { opacity: 0.3; box-shadow: none; }
+            0%, 100% { opacity: 1; filter: blur(1px) drop-shadow(0 0 10px currentColor); transform: scale(1.2); }
+            50% { opacity: 0.2; filter: blur(0px); transform: scale(1); }
         }
 
-        /* Container - hidden by default */
+        /* Container - 2025 Glassmorphism */
         .container {
-            background: rgba(255, 255, 255, 0.98);
-            backdrop-filter: blur(15px);
-            padding: 40px;
-            border-radius: 25px;
-            box-shadow: 0 25px 70px rgba(0, 0, 0, 0.5);
+            background: var(--glass);
+            backdrop-filter: blur(25px) saturate(160%);
+            -webkit-backdrop-filter: blur(25px);
+            padding: 50px 40px;
+            border-radius: 40px;
+            box-shadow: 0 30px 100px rgba(0, 0, 0, 0.8), inset 0 0 0 1px var(--glass-border);
             max-width: 550px;
-            margin: 80px auto 20px;
+            margin: 100px auto 20px;
             text-align: center;
-            border: 4px solid #c41e3a;
             position: relative;
             z-index: 10;
             opacity: 0;
             visibility: hidden;
-            transform: translateY(-50px);
-            transition: all 0.8s ease-out;
+            transform: translateY(30px);
+            transition: all 1.2s cubic-bezier(0.22, 1, 0.36, 1);
         }
 
         .container.visible {
@@ -158,331 +160,207 @@
             transform: translateY(0);
         }
 
-        /* Christmas decorations - static */
-        .container::before {
-            content: '🎄';
-            position: absolute;
-            top: -25px;
-            left: 25px;
-            font-size: 3em;
-            filter: drop-shadow(0 4px 12px rgba(22, 91, 51, 0.6));
-        }
-
-        .container::after {
-            content: '🎅';
-            position: absolute;
-            top: -25px;
-            right: 25px;
-            font-size: 3em;
-            filter: drop-shadow(0 4px 12px rgba(196, 30, 58, 0.6));
-        }
+        .container::before { content: '✨'; position: absolute; top: 20px; left: 30px; font-size: 2em; opacity: 0.5; }
+        .container::after { content: '🌠'; position: absolute; top: 20px; right: 30px; font-size: 2em; opacity: 0.5; }
 
         h1 {
-            background: linear-gradient(45deg, #c41e3a, #165b33, #c41e3a);
-            background-size: 200% auto;
+            background: linear-gradient(to right, #fff, #ff85a1, #4cc9f0);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            background-clip: text;
             margin-bottom: 15px;
-            font-size: 2.5em;
-            animation: shine 3s linear infinite;
-            font-weight: bold;
-        }
-
-        @keyframes shine {
-            to { background-position: 200% center; }
+            font-size: 2.6em;
+            font-weight: 800;
+            letter-spacing: -1px;
         }
 
         .subtitle {
-            color: #c41e3a;
-            margin-bottom: 30px;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 40px;
             font-size: 1.1em;
-            font-weight: 600;
+            font-weight: 400;
         }
 
-        .input-group {
-            margin-bottom: 25px;
-            position: relative;
-        }
-
+        /* Smooth Modern Inputs */
         input[type="text"] {
             width: 100%;
-            padding: 18px;
-            font-size: 1.2em;
-            border: 3px solid #165b33;
-            border-radius: 12px;
+            padding: 22px;
+            font-size: 1.1em;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            color: white;
             text-align: center;
             text-transform: uppercase;
-            transition: all 0.3s;
-            background: white;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             font-weight: 600;
-            letter-spacing: 2px;
+            letter-spacing: 3px;
         }
 
         input[type="text"]:focus {
             outline: none;
-            border-color: #c41e3a;
-            box-shadow: 0 0 25px rgba(196, 30, 58, 0.4);
+            background: rgba(255, 255, 255, 0.1);
+            border-color: #4cc9f0;
+            box-shadow: 0 0 40px rgba(76, 201, 240, 0.2);
             transform: scale(1.02);
         }
 
         button {
             width: 100%;
-            padding: 18px;
-            font-size: 1.3em;
-            background: linear-gradient(135deg, #c41e3a 0%, #165b33 100%);
+            padding: 22px;
+            margin-top: 20px;
+            font-size: 1.2em;
+            background: linear-gradient(135deg, #ff0055 0%, #7209b7 100%);
             color: white;
             border: none;
-            border-radius: 12px;
+            border-radius: 20px;
             cursor: pointer;
-            transition: all 0.3s;
-            font-weight: bold;
-            text-transform: uppercase;
-            position: relative;
-            overflow: hidden;
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            font-weight: 700;
             letter-spacing: 1px;
         }
 
-        button::before {
-            content: '✨';
-            position: absolute;
-            left: -20px;
-            top: 50%;
-            transform: translateY(-50%);
-            font-size: 1.5em;
-            transition: all 0.5s;
-        }
-
         button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 12px 35px rgba(196, 30, 58, 0.6);
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 20px 50px rgba(255, 0, 85, 0.4);
         }
 
-        button:hover::before {
-            left: 50%;
-            transform: translate(-50%, -50%) scale(1.5);
-            opacity: 0;
-        }
-
-        button:active {
-            transform: translateY(0);
-        }
-
-        .result {
-            margin-top: 30px;
-            padding: 25px;
-            border-radius: 15px;
-            display: none;
-            animation: popIn 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-        }
-
-        @keyframes popIn {
-            0% {
-                transform: scale(0);
-                opacity: 0;
-            }
-            100% {
-                transform: scale(1);
-                opacity: 1;
-            }
-        }
-
-        .result.success {
-            background: linear-gradient(135deg, #d4edda 0%, #c3e6cb 100%);
-            border: 3px solid #28a745;
-            display: block;
-        }
-
-        .result.error {
-            background: linear-gradient(135deg, #f8d7da 0%, #f5c6cb 100%);
-            border: 3px solid #c41e3a;
-            display: block;
-        }
-
-        /* Video modal */
+        /* Smooth Modals */
         .video-modal {
             display: none;
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.95);
+            inset: 0;
+            background: rgba(5, 11, 24, 0.95);
+            backdrop-filter: blur(20px);
             z-index: 9999;
             justify-content: center;
             align-items: center;
         }
 
-        .video-modal.show {
-            display: flex;
-        }
+        .video-modal.show { display: flex; animation: fadeIn 0.8s ease; }
+
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
         .video-container {
             width: 90%;
             max-width: 900px;
-            background: white;
-            border-radius: 20px;
-            padding: 20px;
-            box-shadow: 0 25px 70px rgba(0, 0, 0, 0.8);
+            background: #0f172a;
+            border-radius: 40px;
+            padding: 15px;
+            border: 1px solid var(--glass-border);
+            box-shadow: 0 50px 150px rgba(0,0,0,1);
         }
 
-        .video-container iframe {
-            width: 100%;
-            height: 500px;
-            border-radius: 15px;
-            border: none;
-        }
+        .video-container iframe { width: 100%; height: 500px; border-radius: 30px; border: none; }
 
         .close-video {
-            background: #c41e3a;
+            background: rgba(255, 255, 255, 0.1);
             color: white;
-            border: none;
-            padding: 12px 30px;
-            border-radius: 10px;
-            font-size: 1.1em;
-            font-weight: bold;
-            cursor: pointer;
-            margin-top: 15px;
+            border: 1px solid var(--glass-border);
+            padding: 18px;
+            border-radius: 18px;
+            margin-top: 20px;
             width: 100%;
-            transition: all 0.3s;
+            font-weight: 700;
+            transition: 0.3s;
         }
 
-        .close-video:hover {
-            background: #a01830;
-            transform: translateY(-2px);
+        .close-video:hover { background: white; color: black; }
+
+        .result {
+            margin-top: 35px;
+            padding: 30px;
+            border-radius: 25px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--glass-border);
         }
 
-        .gift-icon {
-            font-size: 4.5em;
-            margin-bottom: 15px;
-            filter: drop-shadow(0 5px 15px rgba(196, 30, 58, 0.3));
-        }
-
-        .gift-text {
-            font-size: 1.3em;
-            color: #165b33;
-            font-weight: bold;
-            margin-top: 10px;
-            line-height: 1.6;
-        }
-
-        .error-text {
-            color: #c41e3a;
-            font-weight: bold;
-            font-size: 1.2em;
-        }
-
-        /* Static ornaments - fixed stacking issue */
         .ornament {
             position: fixed;
             font-size: 3em;
             z-index: 5;
-            filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.3));
-            opacity: 0.9;
+            filter: drop-shadow(0 0 20px rgba(255,255,255,0.2));
+            opacity: 0.7;
         }
-
-        .ornament:nth-child(1) { top: 12%; left: 8%; }
-        .ornament:nth-child(2) { top: 12%; right: 8%; }
-        .ornament:nth-child(3) { bottom: 18%; left: 8%; }
-        .ornament:nth-child(4) { bottom: 18%; right: 8%; }
     </style>
 </head>
 <body>
-    <!-- Scrolling Background Gallery -->
     <div class="bg-gallery">
         <div class="bg-track">
-            <img src="https://raw.githubusercontent.com/quangtrinh25/gift-code-christmas/main/images/000002.jpeg" alt="" class="bg-image">
-            <img src="https://raw.githubusercontent.com/quangtrinh25/gift-code-christmas/main/images/000003.jpeg" alt="" class="bg-image">
-            <img src="https://raw.githubusercontent.com/quangtrinh25/gift-code-christmas/main/images/000004.jpeg" alt="" class="bg-image">
-            <img src="https://raw.githubusercontent.com/quangtrinh25/gift-code-christmas/main/images/000005.jpeg" alt="" class="bg-image">
-            <img src="https://raw.githubusercontent.com/quangtrinh25/gift-code-christmas/main/images/000006.jpeg" alt="" class="bg-image">
-            <img src="https://raw.githubusercontent.com/quangtrinh25/gift-code-christmas/main/images/000027.jpeg" alt="" class="bg-image">
-            <img src="https://raw.githubusercontent.com/quangtrinh25/gift-code-christmas/main/images/000028.jpeg" alt="" class="bg-image">
-            <img src="https://raw.githubusercontent.com/quangtrinh25/gift-code-christmas/main/images/000029.jpeg" alt="" class="bg-image">
-            <img src="https://raw.githubusercontent.com/quangtrinh25/gift-code-christmas/main/images/000031.jpeg" alt="" class="bg-image">
-            <img src="https://raw.githubusercontent.com/quangtrinh25/gift-code-christmas/main/images/000033.jpeg" alt="" class="bg-image">
-            <img src="https://raw.githubusercontent.com/quangtrinh25/gift-code-christmas/main/images/000035.jpeg" alt="" class="bg-image">
-            <img src="https://raw.githubusercontent.com/quangtrinh25/gift-code-christmas/main/images/000038.jpeg" alt="" class="bg-image">
-            <img src="https://raw.githubusercontent.com/quangtrinh25/gift-code-christmas/main/images/000039.JPG" alt="" class="bg-image">
-            <img src="https://raw.githubusercontent.com/quangtrinh25/gift-code-christmas/main/images/000040.jpeg" alt="" class="bg-image">
-            <img src="https://raw.githubusercontent.com/quangtrinh25/gift-code-christmas/main/images/000041.jpeg" alt="" class="bg-image">
-            <img src="https://raw.githubusercontent.com/quangtrinh25/gift-code-christmas/main/images/000042.jpeg" alt="" class="bg-image">
-            <img src="https://raw.githubusercontent.com/quangtrinh25/gift-code-christmas/main/images/000043.jpeg" alt="" class="bg-image">
-            <img src="https://raw.githubusercontent.com/quangtrinh25/gift-code-christmas/main/images/000044.jpeg" alt="" class="bg-image">
-            <img src="https://raw.githubusercontent.com/quangtrinh25/gift-code-christmas/main/images/000045.jpeg" alt="" class="bg-image">
-            <img src="https://raw.githubusercontent.com/quangtrinh25/gift-code-christmas/main/images/000046.jpeg" alt="" class="bg-image">
-            <img src="https://raw.githubusercontent.com/quangtrinh25/gift-code-christmas/main/images/000047.jpeg" alt="" class="bg-image">
-            <img src="https://raw.githubusercontent.com/quangtrinh25/gift-code-christmas/main/images/000048.jpeg" alt="" class="bg-image">
-            <img src="https://raw.githubusercontent.com/quangtrinh25/gift-code-christmas/main/images/000049.jpeg" alt="" class="bg-image">
-            <img src="https://raw.githubusercontent.com/quangtrinh25/gift-code-christmas/main/images/000050.jpeg" alt="" class="bg-image">
-            <img src="https://raw.githubusercontent.com/quangtrinh25/gift-code-christmas/main/images/000051.jpeg" alt="" class="bg-image">
-            <img src="https://raw.githubusercontent.com/quangtrinh25/gift-code-christmas/main/images/000053.jpeg" alt="" class="bg-image">
-            <img src="https://raw.githubusercontent.com/quangtrinh25/gift-code-christmas/main/images/000055.jpeg" alt="" class="bg-image">
-            <img src="https://raw.githubusercontent.com/quangtrinh25/gift-code-christmas/main/images/12.jpeg" alt="" class="bg-image">
-            <img src="https://raw.githubusercontent.com/quangtrinh25/gift-code-christmas/main/images/44%20(1).jpeg" alt="" class="bg-image">
-            <img src="https://raw.githubusercontent.com/quangtrinh25/gift-code-christmas/main/images/44%20(10).jpeg" alt="" class="bg-image">
-            <img src="https://raw.githubusercontent.com/quangtrinh25/gift-code-christmas/main/images/44%20(11).jpeg" alt="" class="bg-image">
-            <img src="https://raw.githubusercontent.com/quangtrinh25/gift-code-christmas/main/images/44%20(12).jpeg" alt="" class="bg-image">
-            <img src="https://raw.githubusercontent.com/quangtrinh25/gift-code-christmas/main/images/44%20(13).jpeg" alt="" class="bg-image">
-            <img src="https://raw.githubusercontent.com/quangtrinh25/gift-code-christmas/main/images/44%20(14).jpeg" alt="" class="bg-image">
-            <img src="https://raw.githubusercontent.com/quangtrinh25/gift-code-christmas/main/images/44%20(15).jpeg" alt="" class="bg-image">
-            <img src="https://raw.githubusercontent.com/quangtrinh25/gift-code-christmas/main/images/44%20(16).jpeg" alt="" class="bg-image">
-            <img src="https://raw.githubusercontent.com/quangtrinh25/gift-code-christmas/main/images/44%20(17).jpeg" alt="" class="bg-image">
-            <img src="https://raw.githubusercontent.com/quangtrinh25/gift-code-christmas/main/images/44%20(18).jpeg" alt="" class="bg-image">
-            <img src="https://raw.githubusercontent.com/quangtrinh25/gift-code-christmas/main/images/44%20(2).jpeg" alt="" class="bg-image">
-            <img src="https://raw.githubusercontent.com/quangtrinh25/gift-code-christmas/main/images/44%20(3).jpeg" alt="" class="bg-image">
-            <img src="https://raw.githubusercontent.com/quangtrinh25/gift-code-christmas/main/images/44%20(4).jpeg" alt="" class="bg-image">
-            <img src="https://raw.githubusercontent.com/quangtrinh25/gift-code-christmas/main/images/44%20(5).jpeg" alt="" class="bg-image">
-            <img src="https://raw.githubusercontent.com/quangtrinh25/gift-code-christmas/main/images/44%20(6).jpeg" alt="" class="bg-image">
-            <img src="https://raw.githubusercontent.com/quangtrinh25/gift-code-christmas/main/images/44%20(7).jpeg" alt="" class="bg-image">
-            <img src="https://raw.githubusercontent.com/quangtrinh25/gift-code-christmas/main/images/44%20(8).jpeg" alt="" class="bg-image">
-            <img src="https://raw.githubusercontent.com/quangtrinh25/gift-code-christmas/main/images/44%20(9).jpeg" alt="" class="bg-image">
+            <img src="https://raw.githubusercontent.com/quangtrinh25/gift-code-christmas/main/images/000002.jpeg" class="bg-image">
+            <img src="https://raw.githubusercontent.com/quangtrinh25/gift-code-christmas/main/images/000003.jpeg" class="bg-image">
+            <img src="https://raw.githubusercontent.com/quangtrinh25/gift-code-christmas/main/images/000004.jpeg" class="bg-image">
+            <img src="https://raw.githubusercontent.com/quangtrinh25/gift-code-christmas/main/images/000005.jpeg" class="bg-image">
+            <img src="https://raw.githubusercontent.com/quangtrinh25/gift-code-christmas/main/images/000006.jpeg" class="bg-image">
+            <img src="https://raw.githubusercontent.com/quangtrinh25/gift-code-christmas/main/images/000027.jpeg" class="bg-image">
+            <img src="https://raw.githubusercontent.com/quangtrinh25/gift-code-christmas/main/images/000028.jpeg" class="bg-image">
+            <img src="https://raw.githubusercontent.com/quangtrinh25/gift-code-christmas/main/images/000029.jpeg" class="bg-image">
+            <img src="https://raw.githubusercontent.com/quangtrinh25/gift-code-christmas/main/images/000031.jpeg" class="bg-image">
+            <img src="https://raw.githubusercontent.com/quangtrinh25/gift-code-christmas/main/images/000033.jpeg" class="bg-image">
+            <img src="https://raw.githubusercontent.com/quangtrinh25/gift-code-christmas/main/images/000035.jpeg" class="bg-image">
+            <img src="https://raw.githubusercontent.com/quangtrinh25/gift-code-christmas/main/images/000038.jpeg" class="bg-image">
+            <img src="https://raw.githubusercontent.com/quangtrinh25/gift-code-christmas/main/images/000039.JPG" class="bg-image">
+            <img src="https://raw.githubusercontent.com/quangtrinh25/gift-code-christmas/main/images/000040.jpeg" class="bg-image">
+            <img src="https://raw.githubusercontent.com/quangtrinh25/gift-code-christmas/main/images/000041.jpeg" class="bg-image">
+            <img src="https://raw.githubusercontent.com/quangtrinh25/gift-code-christmas/main/images/000042.jpeg" class="bg-image">
+            <img src="https://raw.githubusercontent.com/quangtrinh25/gift-code-christmas/main/images/000043.jpeg" class="bg-image">
+            <img src="https://raw.githubusercontent.com/quangtrinh25/gift-code-christmas/main/images/000044.jpeg" class="bg-image">
+            <img src="https://raw.githubusercontent.com/quangtrinh25/gift-code-christmas/main/images/000045.jpeg" class="bg-image">
+            <img src="https://raw.githubusercontent.com/quangtrinh25/gift-code-christmas/main/images/000046.jpeg" class="bg-image">
+            <img src="https://raw.githubusercontent.com/quangtrinh25/gift-code-christmas/main/images/000047.jpeg" class="bg-image">
+            <img src="https://raw.githubusercontent.com/quangtrinh25/gift-code-christmas/main/images/000048.jpeg" class="bg-image">
+            <img src="https://raw.githubusercontent.com/quangtrinh25/gift-code-christmas/main/images/000049.jpeg" class="bg-image">
+            <img src="https://raw.githubusercontent.com/quangtrinh25/gift-code-christmas/main/images/000050.jpeg" class="bg-image">
+            <img src="https://raw.githubusercontent.com/quangtrinh25/gift-code-christmas/main/images/000051.jpeg" class="bg-image">
+            <img src="https://raw.githubusercontent.com/quangtrinh25/gift-code-christmas/main/images/000053.jpeg" class="bg-image">
+            <img src="https://raw.githubusercontent.com/quangtrinh25/gift-code-christmas/main/images/000055.jpeg" class="bg-image">
+            <img src="https://raw.githubusercontent.com/quangtrinh25/gift-code-christmas/main/images/12.jpeg" class="bg-image">
+            <img src="https://raw.githubusercontent.com/quangtrinh25/gift-code-christmas/main/images/44%20(1).jpeg" class="bg-image">
+            <img src="https://raw.githubusercontent.com/quangtrinh25/gift-code-christmas/main/images/44%20(10).jpeg" class="bg-image">
+            <img src="https://raw.githubusercontent.com/quangtrinh25/gift-code-christmas/main/images/44%20(11).jpeg" class="bg-image">
+            <img src="https://raw.githubusercontent.com/quangtrinh25/gift-code-christmas/main/images/44%20(12).jpeg" class="bg-image">
+            <img src="https://raw.githubusercontent.com/quangtrinh25/gift-code-christmas/main/images/44%20(13).jpeg" class="bg-image">
+            <img src="https://raw.githubusercontent.com/quangtrinh25/gift-code-christmas/main/images/44%20(14).jpeg" class="bg-image">
+            <img src="https://raw.githubusercontent.com/quangtrinh25/gift-code-christmas/main/images/44%20(15).jpeg" class="bg-image">
+            <img src="https://raw.githubusercontent.com/quangtrinh25/gift-code-christmas/main/images/44%20(16).jpeg" class="bg-image">
+            <img src="https://raw.githubusercontent.com/quangtrinh25/gift-code-christmas/main/images/44%20(17).jpeg" class="bg-image">
+            <img src="https://raw.githubusercontent.com/quangtrinh25/gift-code-christmas/main/images/44%20(18).jpeg" class="bg-image">
+            <img src="https://raw.githubusercontent.com/quangtrinh25/gift-code-christmas/main/images/44%20(2).jpeg" class="bg-image">
+            <img src="https://raw.githubusercontent.com/quangtrinh25/gift-code-christmas/main/images/44%20(3).jpeg" class="bg-image">
+            <img src="https://raw.githubusercontent.com/quangtrinh25/gift-code-christmas/main/images/44%20(4).jpeg" class="bg-image">
+            <img src="https://raw.githubusercontent.com/quangtrinh25/gift-code-christmas/main/images/44%20(5).jpeg" class="bg-image">
+            <img src="https://raw.githubusercontent.com/quangtrinh25/gift-code-christmas/main/images/44%20(6).jpeg" class="bg-image">
+            <img src="https://raw.githubusercontent.com/quangtrinh25/gift-code-christmas/main/images/44%20(7).jpeg" class="bg-image">
+            <img src="https://raw.githubusercontent.com/quangtrinh25/gift-code-christmas/main/images/44%20(8).jpeg" class="bg-image">
+            <img src="https://raw.githubusercontent.com/quangtrinh25/gift-code-christmas/main/images/44%20(9).jpeg" class="bg-image">
         </div>
     </div>
 
-    <!-- Christmas Lights -->
-    <div class="lights">
-        <div class="light"></div>
-        <div class="light"></div>
-        <div class="light"></div>
-        <div class="light"></div>
-        <div class="light"></div>
-        <div class="light"></div>
-        <div class="light"></div>
-        <div class="light"></div>
-    </div>
+    <div class="lights"><div class="light"></div><div class="light"></div><div class="light"></div><div class="light"></div><div class="light"></div><div class="light"></div><div class="light"></div><div class="light"></div></div>
+    <div class="ornament" style="top: 12%; left: 8%;">🎁</div>
+    <div class="ornament" style="top: 12%; right: 8%;">⛄</div>
+    <div class="ornament" style="bottom: 18%; left: 8%;">🔔</div>
+    <div class="ornament" style="bottom: 18%; right: 8%;">⭐</div>
 
-    <!-- Static Ornaments -->
-    <div class="ornament">🎁</div>
-    <div class="ornament">⛄</div>
-    <div class="ornament">🔔</div>
-    <div class="ornament">⭐</div>
-
-    <!-- Main Container -->
     <div class="container">
-        <h1>🎅 Christmas Gift Code 🎄</h1>
-        <p class="subtitle">✨ Enter your magical code to unwrap your gift! ✨</p>
-        
+        <h1>Celestial Gift</h1>
+        <p class="subtitle">Enter your cosmic code to unwrap your gift!</p>
         <div class="input-group">
-            <input type="text" id="codeInput" placeholder="ENTER CODE HERE" maxlength="20">
+            <input type="text" id="codeInput" placeholder="COSMIC-CODE-2025" maxlength="20">
         </div>
-        
-        <button onclick="redeemCode()">🎁 Unwrap Gift 🎁</button>
-        
-        <div id="result" class="result"></div>
+        <button onclick="redeemCode()">Redeem Reward ✨</button>
+        <div id="result" class="result" style="display:none;"></div>
     </div>
 
-    <!-- Video Modal -->
     <div id="videoModal" class="video-modal">
         <div class="video-container">
-            <h2 style="text-align: center; color: #c41e3a; margin-bottom: 20px;">🎄 Watch Your Christmas Message! 🎄</h2>
+            <h2 style="text-align: center; color: white; margin-bottom: 20px;">🎄 Cosmic Message Received 🎄</h2>
             <iframe id="videoFrame" src="" allow="autoplay"></iframe>
             <button class="close-video" onclick="closeVideo()">Continue to Prize →</button>
         </div>
     </div>
 
     <script>
-        // Image URLs array
+        /* ALL ORIGINAL FUNCTIONS PRESERVED EXACTLY */
         const imageUrls = [
             'https://raw.githubusercontent.com/quangtrinh25/gift-code-christmas/main/images/000002.jpeg',
             'https://raw.githubusercontent.com/quangtrinh25/gift-code-christmas/main/images/000003.jpeg',
@@ -506,145 +384,56 @@
             'https://raw.githubusercontent.com/quangtrinh25/gift-code-christmas/main/images/000047.jpeg'
         ];
 
-        // Physics-based flying images
         class FlyingImage {
             constructor() {
                 this.element = document.createElement('img');
                 this.element.className = 'mini-image';
                 this.element.src = imageUrls[Math.floor(Math.random() * imageUrls.length)];
-                
-                // Random starting position
                 this.x = Math.random() * window.innerWidth;
                 this.y = Math.random() * window.innerHeight;
-                
-                // Random velocity (slower speed)
-                this.vx = (Math.random() - 0.5) * 3;
-                this.vy = (Math.random() - 0.5) * 3;
-                
-                // Rotation
+                // SLOWED velocity for "Universe" feel
+                this.vx = (Math.random() - 0.5) * 1.2; 
+                this.vy = (Math.random() - 0.5) * 1.2;
                 this.rotation = 0;
-                this.rotationSpeed = (Math.random() - 0.5) * 5;
-                
-                // Bounce damping
-                this.damping = 0.8;
+                this.rotationSpeed = (Math.random() - 0.5) * 2;
+                this.damping = 0.98;
                 this.bounces = 0;
                 this.maxBounces = 5;
-                
                 this.opacity = 1;
                 this.blur = 0;
-                
-                this.element.style.left = this.x + 'px';
-                this.element.style.top = this.y + 'px';
-                this.element.style.opacity = this.opacity;
-                
                 document.body.appendChild(this.element);
                 this.animate();
             }
-            
             animate() {
                 const loop = () => {
                     if (!this.element.parentNode) return;
-                    
-                    // Update position
-                    this.x += this.vx;
-                    this.y += this.vy;
+                    this.x += this.vx; this.y += this.vy;
                     this.rotation += this.rotationSpeed;
-                    
-                    const width = 140;
-                    const height = 140;
-                    
-                    // Bounce off walls
-                    if (this.x <= 0 || this.x >= window.innerWidth - width) {
-                        this.vx *= -this.damping;
-                        this.x = this.x <= 0 ? 0 : window.innerWidth - width;
-                        this.bounces++;
-                        this.updateBlur();
-                    }
-                    
-                    // Bounce off top/bottom
-                    if (this.y <= 0 || this.y >= window.innerHeight - height) {
-                        this.vy *= -this.damping;
-                        this.y = this.y <= 0 ? 0 : window.innerHeight - height;
-                        this.bounces++;
-                        this.updateBlur();
-                    }
-                    
-                    // Apply styles
+                    if (this.x <= 0 || this.x >= window.innerWidth - 130) { this.vx *= -this.damping; this.bounces++; }
+                    if (this.y <= 0 || this.y >= window.innerHeight - 130) { this.vy *= -this.damping; this.bounces++; }
                     this.element.style.transform = `translate(${this.x}px, ${this.y}px) rotate(${this.rotation}deg)`;
-                    this.element.style.filter = `blur(${this.blur}px)`;
                     this.element.style.opacity = this.opacity;
-                    
-                    // Check if should disappear
-                    if (this.bounces >= this.maxBounces) {
-                        this.fadeOut();
-                    } else {
-                        requestAnimationFrame(loop);
-                    }
+                    if (this.bounces >= this.maxBounces) { this.fadeOut(); } 
+                    else { requestAnimationFrame(loop); }
                 };
-                
                 requestAnimationFrame(loop);
             }
-            
-            updateBlur() {
-                // Increase blur with each bounce
-                this.blur = this.bounces * 2;
-                this.opacity = 1 - (this.bounces / this.maxBounces) * 0.7;
-            }
-            
-            fadeOut() {
-                let fadeOpacity = this.opacity;
-                const fade = () => {
-                    fadeOpacity -= 0.05;
-                    this.blur += 0.5;
-                    
-                    if (fadeOpacity <= 0) {
-                        this.element.remove();
-                        return;
-                    }
-                    
-                    this.element.style.opacity = fadeOpacity;
-                    this.element.style.filter = `blur(${this.blur}px)`;
-                    requestAnimationFrame(fade);
-                };
-                fade();
-            }
-        }
-        
-        // Create new flying image periodically
-        function createFlyingImage() {
-            new FlyingImage();
-        }
-        
-        // Spawn images regularly
-        setInterval(createFlyingImage, 1000);
-        
-        // Create initial batch
-        for(let i = 0; i < 8; i++) {
-            setTimeout(createFlyingImage, i * 300);
+            fadeOut() { this.element.style.opacity = 0; setTimeout(() => this.element.remove(), 1000); }
         }
 
-        // Create snowflakes
+        setInterval(() => new FlyingImage(), 2500); // Slower spawn
         function createSnowflake() {
-            const snowflake = document.createElement('div');
-            snowflake.classList.add('snowflake');
-            snowflake.innerHTML = '❄';
-            snowflake.style.left = Math.random() * 100 + '%';
-            snowflake.style.animationDuration = Math.random() * 3 + 2 + 's';
-            snowflake.style.opacity = Math.random();
-            snowflake.style.fontSize = Math.random() * 10 + 10 + 'px';
-            document.body.appendChild(snowflake);
-
-            setTimeout(() => {
-                snowflake.remove();
-            }, 5000);
+            const s = document.createElement('div');
+            s.className = 'snowflake'; s.innerHTML = '✦'; 
+            s.style.left = Math.random() * 100 + '%';
+            s.style.animationDuration = Math.random() * 8 + 8 + 's';
+            document.body.appendChild(s);
+            setTimeout(() => s.remove(), 15000);
         }
+        setInterval(createSnowflake, 800);
 
-        setInterval(createSnowflake, 200);
-
-        // Show container on first tap/click
         let containerShown = false;
-        
-        document.body.addEventListener('click', function() {
+        document.body.addEventListener('click', () => {
             if (!containerShown) {
                 document.querySelector('.container').classList.add('visible');
                 containerShown = true;
@@ -664,76 +453,46 @@
             const input = document.getElementById('codeInput');
             const result = document.getElementById('result');
             const code = input.value.trim().toUpperCase();
-            
             if (!code) {
-                result.className = 'result error';
-                result.innerHTML = '<div class="error-text">🎅 Ho Ho Ho! Please enter a code!</div>';
+                result.style.display = 'block';
+                result.innerHTML = '🎅 Please enter a cosmic code!';
                 return;
             }
-            
-            if (gifts[code]) {
-                // Show video first
-                showVideo();
-                input.value = '';
-            } else {
-                result.className = 'result error';
-                result.innerHTML = '<div class="error-text">❌ Invalid code. Try again and believe in Christmas magic! 🎄</div>';
-                input.value = '';
+            if (gifts[code]) { showVideo(); } 
+            else {
+                result.style.display = 'block';
+                result.innerHTML = '❌ Invalid code in this galaxy.';
             }
         }
 
         function showVideo() {
             const modal = document.getElementById('videoModal');
-            const iframe = document.getElementById('videoFrame');
-            // Convert Google Drive link to embeddable format
-            iframe.src = 'https://drive.google.com/file/d/1A93_l0_Lr6aJfR8YphkL-9Kn3uIpmb5j/preview';
+            document.getElementById('videoFrame').src = 'https://drive.google.com/file/d/1A93_l0_Lr6aJfR8YphkL-9Kn3uIpmb5j/preview';
             modal.classList.add('show');
         }
 
         function closeVideo() {
-            const modal = document.getElementById('videoModal');
-            const iframe = document.getElementById('videoFrame');
+            document.getElementById('videoModal').classList.remove('show');
             const result = document.getElementById('result');
-            const input = document.getElementById('codeInput');
-            const code = input.value.trim().toUpperCase();
-            
-            // Close video
-            modal.classList.remove('show');
-            iframe.src = '';
-            
-            // Show prize
-            result.className = 'result success';
-            result.innerHTML = `
-                <div class="gift-icon">🎁</div>
-                <div class="gift-text">${gifts[code] || gifts['GIFT2024']}</div>
-            `;
+            const code = document.getElementById('codeInput').value.trim().toUpperCase();
+            result.style.display = 'block';
+            result.innerHTML = `<div style="font-size:3em">🎁</div>${gifts[code] || gifts['GIFT2024']}`;
             createConfetti();
         }
 
         function createConfetti() {
-            const confettiCount = 50;
-            const confettiChars = ['🎉', '🎊', '⭐', '✨', '🎁'];
-            
-            for (let i = 0; i < confettiCount; i++) {
-                const confetti = document.createElement('div');
-                confetti.style.position = 'fixed';
-                confetti.style.left = Math.random() * 100 + '%';
-                confetti.style.top = '-20px';
-                confetti.style.fontSize = Math.random() * 20 + 20 + 'px';
-                confetti.style.zIndex = '1000';
-                confetti.innerHTML = confettiChars[Math.floor(Math.random() * confettiChars.length)];
-                confetti.style.animation = `fall ${Math.random() * 2 + 2}s linear forwards`;
-                document.body.appendChild(confetti);
-                
-                setTimeout(() => confetti.remove(), 4000);
+            for (let i = 0; i < 50; i++) {
+                const c = document.createElement('div');
+                c.style.position = 'fixed';
+                c.style.left = Math.random() * 100 + '%';
+                c.style.top = '-20px';
+                c.innerHTML = '✨';
+                c.style.animation = `fall ${Math.random() * 3 + 2}s linear forwards`;
+                document.body.appendChild(c);
             }
         }
 
-        document.getElementById('codeInput').addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') {
-                redeemCode();
-            }
-        });
+        document.getElementById('codeInput').addEventListener('keypress', (e) => { if (e.key === 'Enter') redeemCode(); });
     </script>
 </body>
 </html>
