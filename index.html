@@ -13,7 +13,18 @@
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            /* Option 1: Gradient Background (current) */
+            /*background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            
+            /* Option 2: Image Background (uncomment to use) */
+            background-image: url('https://github.com/quangtrinh25/gift-code-christmas/blob/main/images/000046.jpeg'); */
+            background-size: cover; */
+            background-position: center; */
+            background-attachment: fixed; */
+            
+            /* Option 3: Solid Color */
+            /* background: #FF6B6B; */
+            
             min-height: 100vh;
             display: flex;
             justify-content: center;
@@ -32,7 +43,7 @@
         }
 
         h1 {
-            color: #667eea;
+            color: #667eea; /* Change title color here */
             margin-bottom: 10px;
             font-size: 2em;
         }
@@ -67,7 +78,9 @@
             width: 100%;
             padding: 15px;
             font-size: 1.1em;
+            /* Change button colors here */
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            /* Or use solid color: background: #FF6B6B; */
             color: white;
             border: none;
             border-radius: 10px;
