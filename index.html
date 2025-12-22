@@ -13,14 +13,57 @@
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-image: url('https://raw.githubusercontent.com/quangtrinh25/gift-code-christmas/main/images/000046.jpeg');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
+            background-color: #0a1628;
             min-height: 100vh;
             padding: 20px;
             overflow-x: hidden;
             position: relative;
+        }
+
+        /* Scrolling background gallery */
+        .bg-gallery {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .bg-track {
+            display: flex;
+            flex-direction: column;
+            height: max-content;
+            animation: scrollBgVertical 180s linear infinite;
+        }
+
+        .bg-image {
+            width: 100vw;
+            height: 100vh;
+            object-fit: cover;
+            flex-shrink: 0;
+        }
+
+        @keyframes scrollBgVertical {
+            0% {
+                transform: translateY(0);
+            }
+            100% {
+                transform: translateY(-4500vh);
+            }
+        }
+
+        /* Dark overlay for better readability */
+        .bg-gallery::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.3);
+            pointer-events: none;
         }
 
         /* Snowflakes */
@@ -275,6 +318,58 @@
     </style>
 </head>
 <body>
+    <!-- Scrolling Background Gallery -->
+    <div class="bg-gallery">
+        <div class="bg-track">
+            <img src="https://raw.githubusercontent.com/quangtrinh25/gift-code-christmas/main/images/000002.jpeg" alt="" class="bg-image">
+            <img src="https://raw.githubusercontent.com/quangtrinh25/gift-code-christmas/main/images/000003.jpeg" alt="" class="bg-image">
+            <img src="https://raw.githubusercontent.com/quangtrinh25/gift-code-christmas/main/images/000004.jpeg" alt="" class="bg-image">
+            <img src="https://raw.githubusercontent.com/quangtrinh25/gift-code-christmas/main/images/000005.jpeg" alt="" class="bg-image">
+            <img src="https://raw.githubusercontent.com/quangtrinh25/gift-code-christmas/main/images/000006.jpeg" alt="" class="bg-image">
+            <img src="https://raw.githubusercontent.com/quangtrinh25/gift-code-christmas/main/images/000027.jpeg" alt="" class="bg-image">
+            <img src="https://raw.githubusercontent.com/quangtrinh25/gift-code-christmas/main/images/000028.jpeg" alt="" class="bg-image">
+            <img src="https://raw.githubusercontent.com/quangtrinh25/gift-code-christmas/main/images/000029.jpeg" alt="" class="bg-image">
+            <img src="https://raw.githubusercontent.com/quangtrinh25/gift-code-christmas/main/images/000031.jpeg" alt="" class="bg-image">
+            <img src="https://raw.githubusercontent.com/quangtrinh25/gift-code-christmas/main/images/000033.jpeg" alt="" class="bg-image">
+            <img src="https://raw.githubusercontent.com/quangtrinh25/gift-code-christmas/main/images/000035.jpeg" alt="" class="bg-image">
+            <img src="https://raw.githubusercontent.com/quangtrinh25/gift-code-christmas/main/images/000038.jpeg" alt="" class="bg-image">
+            <img src="https://raw.githubusercontent.com/quangtrinh25/gift-code-christmas/main/images/000039.JPG" alt="" class="bg-image">
+            <img src="https://raw.githubusercontent.com/quangtrinh25/gift-code-christmas/main/images/000040.jpeg" alt="" class="bg-image">
+            <img src="https://raw.githubusercontent.com/quangtrinh25/gift-code-christmas/main/images/000041.jpeg" alt="" class="bg-image">
+            <img src="https://raw.githubusercontent.com/quangtrinh25/gift-code-christmas/main/images/000042.jpeg" alt="" class="bg-image">
+            <img src="https://raw.githubusercontent.com/quangtrinh25/gift-code-christmas/main/images/000043.jpeg" alt="" class="bg-image">
+            <img src="https://raw.githubusercontent.com/quangtrinh25/gift-code-christmas/main/images/000044.jpeg" alt="" class="bg-image">
+            <img src="https://raw.githubusercontent.com/quangtrinh25/gift-code-christmas/main/images/000045.jpeg" alt="" class="bg-image">
+            <img src="https://raw.githubusercontent.com/quangtrinh25/gift-code-christmas/main/images/000046.jpeg" alt="" class="bg-image">
+            <img src="https://raw.githubusercontent.com/quangtrinh25/gift-code-christmas/main/images/000047.jpeg" alt="" class="bg-image">
+            <img src="https://raw.githubusercontent.com/quangtrinh25/gift-code-christmas/main/images/000048.jpeg" alt="" class="bg-image">
+            <img src="https://raw.githubusercontent.com/quangtrinh25/gift-code-christmas/main/images/000049.jpeg" alt="" class="bg-image">
+            <img src="https://raw.githubusercontent.com/quangtrinh25/gift-code-christmas/main/images/000050.jpeg" alt="" class="bg-image">
+            <img src="https://raw.githubusercontent.com/quangtrinh25/gift-code-christmas/main/images/000051.jpeg" alt="" class="bg-image">
+            <img src="https://raw.githubusercontent.com/quangtrinh25/gift-code-christmas/main/images/000053.jpeg" alt="" class="bg-image">
+            <img src="https://raw.githubusercontent.com/quangtrinh25/gift-code-christmas/main/images/000055.jpeg" alt="" class="bg-image">
+            <img src="https://raw.githubusercontent.com/quangtrinh25/gift-code-christmas/main/images/12.jpeg" alt="" class="bg-image">
+            <img src="https://raw.githubusercontent.com/quangtrinh25/gift-code-christmas/main/images/44%20(1).jpeg" alt="" class="bg-image">
+            <img src="https://raw.githubusercontent.com/quangtrinh25/gift-code-christmas/main/images/44%20(10).jpeg" alt="" class="bg-image">
+            <img src="https://raw.githubusercontent.com/quangtrinh25/gift-code-christmas/main/images/44%20(11).jpeg" alt="" class="bg-image">
+            <img src="https://raw.githubusercontent.com/quangtrinh25/gift-code-christmas/main/images/44%20(12).jpeg" alt="" class="bg-image">
+            <img src="https://raw.githubusercontent.com/quangtrinh25/gift-code-christmas/main/images/44%20(13).jpeg" alt="" class="bg-image">
+            <img src="https://raw.githubusercontent.com/quangtrinh25/gift-code-christmas/main/images/44%20(14).jpeg" alt="" class="bg-image">
+            <img src="https://raw.githubusercontent.com/quangtrinh25/gift-code-christmas/main/images/44%20(15).jpeg" alt="" class="bg-image">
+            <img src="https://raw.githubusercontent.com/quangtrinh25/gift-code-christmas/main/images/44%20(16).jpeg" alt="" class="bg-image">
+            <img src="https://raw.githubusercontent.com/quangtrinh25/gift-code-christmas/main/images/44%20(17).jpeg" alt="" class="bg-image">
+            <img src="https://raw.githubusercontent.com/quangtrinh25/gift-code-christmas/main/images/44%20(18).jpeg" alt="" class="bg-image">
+            <img src="https://raw.githubusercontent.com/quangtrinh25/gift-code-christmas/main/images/44%20(2).jpeg" alt="" class="bg-image">
+            <img src="https://raw.githubusercontent.com/quangtritml25/gift-code-christmas/main/images/44%20(3).jpeg" alt="" class="bg-image">
+            <img src="https://raw.githubusercontent.com/quangtrinh25/gift-code-christmas/main/images/44%20(4).jpeg" alt="" class="bg-image">
+            <img src="https://raw.githubusercontent.com/quangtrinh25/gift-code-christmas/main/images/44%20(5).jpeg" alt="" class="bg-image">
+            <img src="https://raw.githubusercontent.com/quangtrinh25/gift-code-christmas/main/images/44%20(6).jpeg" alt="" class="bg-image">
+            <img src="https://raw.githubusercontent.com/quangtrinh25/gift-code-christmas/main/images/44%20(7).jpeg" alt="" class="bg-image">
+            <img src="https://raw.githubusercontent.com/quangtrinh25/gift-code-christmas/main/images/44%20(8).jpeg" alt="" class="bg-image">
+            <img src="https://raw.githubusercontent.com/quangtrinh25/gift-code-christmas/main/images/44%20(9).jpeg" alt="" class="bg-image">
+        </div>
+    </div>
+
     <!-- Christmas Lights -->
     <div class="lights">
         <div class="light"></div>
@@ -342,7 +437,7 @@
             'WINNER01': '🏆 Fantastic! You won a Brand New Laptop!',
             'SPECIAL5': '⭐ Awesome! You won a Luxury Spa Package!',
             'MAGIC123': '✨ Incredible! You won a Weekend Getaway Trip!',
-            'GAY123': '🎊 Excellent! You won a Designer Watch!'
+            'BONUS999': '🎊 Excellent! You won a Designer Watch!'
         };
 
         function redeemCode() {
