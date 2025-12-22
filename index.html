@@ -56,6 +56,37 @@
             }
         }
 
+        /* Flying mini images */
+        .mini-image {
+            position: fixed;
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 15px;
+            opacity: 0.7;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
+            z-index: 1;
+            animation: flyVertical linear infinite;
+            will-change: transform;
+        }
+
+        @keyframes flyVertical {
+            0% {
+                transform: translateY(-200px) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.7;
+            }
+            90% {
+                opacity: 0.7;
+            }
+            100% {
+                transform: translateY(calc(100vh + 200px)) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
         /* Dark overlay for better readability */
         .bg-gallery::after {
             content: '';
@@ -284,6 +315,59 @@
             display: block;
         }
 
+        /* Video modal */
+        .video-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 9999;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .video-modal.show {
+            display: flex;
+        }
+
+        .video-container {
+            width: 90%;
+            max-width: 900px;
+            background: white;
+            border-radius: 20px;
+            padding: 20px;
+            box-shadow: 0 25px 70px rgba(0, 0, 0, 0.8);
+        }
+
+        .video-container iframe {
+            width: 100%;
+            height: 500px;
+            border-radius: 15px;
+            border: none;
+        }
+
+        .close-video {
+            background: #c41e3a;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 10px;
+            font-size: 1.1em;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 15px;
+            width: 100%;
+            transition: all 0.3s;
+        }
+
+        .close-video:hover {
+            background: #a01830;
+            transform: translateY(-2px);
+        }
+
         .gift-icon {
             font-size: 4.5em;
             margin-bottom: 15px;
@@ -404,7 +488,58 @@
         <div id="result" class="result"></div>
     </div>
 
+    <!-- Video Modal -->
+    <div id="videoModal" class="video-modal">
+        <div class="video-container">
+            <h2 style="text-align: center; color: #c41e3a; margin-bottom: 20px;">🎄 Watch Your Christmas Message! 🎄</h2>
+            <iframe id="videoFrame" src="" allow="autoplay"></iframe>
+            <button class="close-video" onclick="closeVideo()">Continue to Prize →</button>
+        </div>
+    </div>
+
     <script>
+        // Image URLs array
+        const imageUrls = [
+            'https://raw.githubusercontent.com/quangtrinh25/gift-code-christmas/main/images/000002.jpeg',
+            'https://raw.githubusercontent.com/quangtrinh25/gift-code-christmas/main/images/000003.jpeg',
+            'https://raw.githubusercontent.com/quangtrinh25/gift-code-christmas/main/images/000004.jpeg',
+            'https://raw.githubusercontent.com/quangtrinh25/gift-code-christmas/main/images/000005.jpeg',
+            'https://raw.githubusercontent.com/quangtrinh25/gift-code-christmas/main/images/000006.jpeg',
+            'https://raw.githubusercontent.com/quangtrinh25/gift-code-christmas/main/images/000027.jpeg',
+            'https://raw.githubusercontent.com/quangtrinh25/gift-code-christmas/main/images/000028.jpeg',
+            'https://raw.githubusercontent.com/quangtrinh25/gift-code-christmas/main/images/000029.jpeg',
+            'https://raw.githubusercontent.com/quangtrinh25/gift-code-christmas/main/images/000031.jpeg',
+            'https://raw.githubusercontent.com/quangtrinh25/gift-code-christmas/main/images/000033.jpeg',
+            'https://raw.githubusercontent.com/quangtrinh25/gift-code-christmas/main/images/000035.jpeg',
+            'https://raw.githubusercontent.com/quangtrinh25/gift-code-christmas/main/images/000038.jpeg',
+            'https://raw.githubusercontent.com/quangtrinh25/gift-code-christmas/main/images/000040.jpeg',
+            'https://raw.githubusercontent.com/quangtrinh25/gift-code-christmas/main/images/000041.jpeg',
+            'https://raw.githubusercontent.com/quangtrinh25/gift-code-christmas/main/images/000042.jpeg',
+            'https://raw.githubusercontent.com/quangtrinh25/gift-code-christmas/main/images/000043.jpeg',
+            'https://raw.githubusercontent.com/quangtrinh25/gift-code-christmas/main/images/000044.jpeg',
+            'https://raw.githubusercontent.com/quangtrinh25/gift-code-christmas/main/images/000045.jpeg',
+            'https://raw.githubusercontent.com/quangtrinh25/gift-code-christmas/main/images/000046.jpeg',
+            'https://raw.githubusercontent.com/quangtrinh25/gift-code-christmas/main/images/000047.jpeg'
+        ];
+
+        // Create flying mini images
+        function createFlyingImage() {
+            const img = document.createElement('img');
+            img.className = 'mini-image';
+            img.src = imageUrls[Math.floor(Math.random() * imageUrls.length)];
+            img.style.left = Math.random() * 100 + '%';
+            img.style.animationDuration = (Math.random() * 5 + 8) + 's';
+            img.style.animationDelay = Math.random() * 2 + 's';
+            document.body.appendChild(img);
+
+            setTimeout(() => {
+                img.remove();
+            }, 15000);
+        }
+
+        // Create flying images continuously
+        setInterval(createFlyingImage, 800);
+
         // Create snowflakes
         function createSnowflake() {
             const snowflake = document.createElement('div');
@@ -439,7 +574,7 @@
             'WINNER01': '🏆 Fantastic! You won a Brand New Laptop!',
             'SPECIAL5': '⭐ Awesome! You won a Luxury Spa Package!',
             'MAGIC123': '✨ Incredible! You won a Weekend Getaway Trip!',
-            'GAY123': '🎊 Excellent! You won a Designer Watch!'
+            'BONUS999': '🎊 Excellent! You won a Designer Watch!'
         };
 
         function redeemCode() {
@@ -454,18 +589,42 @@
             }
             
             if (gifts[code]) {
-                result.className = 'result success';
-                result.innerHTML = `
-                    <div class="gift-icon">🎁</div>
-                    <div class="gift-text">${gifts[code]}</div>
-                `;
-                createConfetti();
+                // Show video first
+                showVideo();
+                input.value = '';
             } else {
                 result.className = 'result error';
                 result.innerHTML = '<div class="error-text">❌ Invalid code. Try again and believe in Christmas magic! 🎄</div>';
+                input.value = '';
             }
+        }
+
+        function showVideo() {
+            const modal = document.getElementById('videoModal');
+            const iframe = document.getElementById('videoFrame');
+            // Convert Google Drive link to embeddable format
+            iframe.src = 'https://drive.google.com/file/d/1A93_l0_Lr6aJfR8YphkL-9Kn3uIpmb5j/preview';
+            modal.classList.add('show');
+        }
+
+        function closeVideo() {
+            const modal = document.getElementById('videoModal');
+            const iframe = document.getElementById('videoFrame');
+            const result = document.getElementById('result');
+            const input = document.getElementById('codeInput');
+            const code = input.value.trim().toUpperCase();
             
-            input.value = '';
+            // Close video
+            modal.classList.remove('show');
+            iframe.src = '';
+            
+            // Show prize
+            result.className = 'result success';
+            result.innerHTML = `
+                <div class="gift-icon">🎁</div>
+                <div class="gift-text">${gifts[code] || gifts['GIFT2024']}</div>
+            `;
+            createConfetti();
         }
 
         function createConfetti() {
