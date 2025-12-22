@@ -59,8 +59,9 @@
         /* Flying mini images with physics */
         .mini-image {
             position: fixed;
-            width: 100px;
-            height: 100px;
+            /* CHANGE 1: Made images bigger (was 100px) */
+            width: 130px;
+            height: 130px;
             object-fit: cover;
             border-radius: 12px;
             box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
@@ -383,12 +384,12 @@
 
         .ornament:nth-child(1) { top: 12%; left: 8%; }
         .ornament:nth-child(2) { top: 12%; right: 8%; }
-        .ornament:nth-child(3) { bottom: 18%; left: 10%; }
-        .ornament:nth-child(4) { bottom: 18%; right: 10%; }
+        /* CHANGE 4: Adjusted positions to fix stacking */
+        .ornament:nth-child(3) { bottom: 12%; left: 10%; } /* Bell moved down */
+        .ornament:nth-child(4) { bottom: 25%; right: 10%; } /* Star moved up */
     </style>
 </head>
 <body>
-    <!-- Scrolling Background Gallery -->
     <div class="bg-gallery">
         <div class="bg-track">
             <img src="https://raw.githubusercontent.com/quangtrinh25/gift-code-christmas/main/images/000002.jpeg" alt="" class="bg-image">
@@ -440,7 +441,6 @@
         </div>
     </div>
 
-    <!-- Christmas Lights -->
     <div class="lights">
         <div class="light"></div>
         <div class="light"></div>
@@ -452,13 +452,11 @@
         <div class="light"></div>
     </div>
 
-    <!-- Static Ornaments -->
     <div class="ornament">🎁</div>
     <div class="ornament">⛄</div>
     <div class="ornament">🔔</div>
     <div class="ornament">⭐</div>
 
-    <!-- Main Container -->
     <div class="container">
         <h1>🎅 Christmas Gift Code 🎄</h1>
         <p class="subtitle">✨ Enter your magical code to unwrap your gift! ✨</p>
@@ -472,7 +470,6 @@
         <div id="result" class="result"></div>
     </div>
 
-    <!-- Video Modal -->
     <div id="videoModal" class="video-modal">
         <div class="video-container">
             <h2 style="text-align: center; color: #c41e3a; margin-bottom: 20px;">🎄 Watch Your Christmas Message! 🎄</h2>
@@ -517,13 +514,15 @@
                 this.x = Math.random() * window.innerWidth;
                 this.y = Math.random() * window.innerHeight;
                 
+                // CHANGE 2: Reduced velocity to make them move slower (was * 6)
                 // Random velocity (zero gravity - constant speed)
-                this.vx = (Math.random() - 0.5) * 6;
-                this.vy = (Math.random() - 0.5) * 6;
+                this.vx = (Math.random() - 0.5) * 3;
+                this.vy = (Math.random() - 0.5) * 3;
                 
                 // Rotation
                 this.rotation = 0;
-                this.rotationSpeed = (Math.random() - 0.5) * 5;
+                // CHANGE 2: Reduced rotation speed (was * 5)
+                this.rotationSpeed = (Math.random() - 0.5) * 3;
                 
                 // Bounce damping
                 this.damping = 0.8;
@@ -550,8 +549,9 @@
                     this.y += this.vy;
                     this.rotation += this.rotationSpeed;
                     
-                    const width = 100;
-                    const height = 100;
+                    // CHANGE 3: Updated width/height to match new CSS size for accurate bouncing
+                    const width = 130;
+                    const height = 130;
                     
                     // Bounce off walls
                     if (this.x <= 0 || this.x >= window.innerWidth - width) {
