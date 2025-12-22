@@ -3,17 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🎄 Neo-Christmas 2025</title>
+    <title>🎄 Christmas Gift Code</title>
     <style>
-        :root {
-            --neon-red: #ff073a;
-            --neon-green: #39ff14;
-            --neon-gold: #ffd700;
-            --neon-blue: #04d9ff;
-            --glass-bg: rgba(20, 30, 50, 0.65);
-            --glass-border: rgba(255, 255, 255, 0.1);
-        }
-
         * {
             margin: 0;
             padding: 0;
@@ -21,16 +12,15 @@
         }
 
         body {
-            font-family: 'Montserrat', 'Segoe UI', Tahoma, sans-serif;
-            background-color: #050a14;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #0a1628;
             min-height: 100vh;
             padding: 20px;
             overflow-x: hidden;
             position: relative;
-            color: #fff;
         }
 
-        /* Scrolling background gallery - Darkened for contrast */
+        /* Scrolling background gallery */
         .bg-gallery {
             position: fixed;
             top: 0;
@@ -39,14 +29,13 @@
             height: 100%;
             z-index: 0;
             overflow: hidden;
-            filter: brightness(0.6) contrast(1.2); /* Darker, higher contrast */
         }
 
         .bg-track {
             display: flex;
             flex-direction: column;
             height: max-content;
-            animation: scrollBgVertical 240s linear infinite; /* Slower scroll */
+            animation: scrollBgVertical 180s linear infinite;
             will-change: transform;
         }
 
@@ -59,25 +48,28 @@
         }
 
         @keyframes scrollBgVertical {
-            0% { transform: translateY(0); }
-            100% { transform: translateY(calc(-100vh * 45)); }
+            0% {
+                transform: translateY(0);
+            }
+            100% {
+                transform: translateY(calc(-100vh * 45));
+            }
         }
 
-        /* Flying mini images - Sleeker look */
+        /* Flying mini images with physics */
         .mini-image {
             position: fixed;
-            width: 130px;
-            height: 130px;
+            width: 140px;
+            height: 140px;
             object-fit: cover;
-            border-radius: 15px;
-            /* Modern glow shadow instead of heavy black shadow */
-            box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
             z-index: 1;
             pointer-events: none;
             transition: filter 0.3s;
         }
 
-        /* Dark cyber overlay */
+        /* Dark overlay for better readability */
         .bg-gallery::after {
             content: '';
             position: absolute;
@@ -85,11 +77,11 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(to bottom, rgba(5, 10, 20, 0.7), rgba(0, 0, 0, 0.9));
+            background: rgba(0, 0, 0, 0.3);
             pointer-events: none;
         }
 
-        /* Snowflakes with slight glow */
+        /* Snowflakes */
         .snowflake {
             position: fixed;
             top: -10px;
@@ -97,205 +89,217 @@
             font-size: 1em;
             animation: fall linear infinite;
             z-index: 1;
-            text-shadow: 0 0 8px rgba(255, 255, 255, 0.9);
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.8);
         }
 
         @keyframes fall {
-            to { transform: translateY(100vh); }
+            to {
+                transform: translateY(100vh);
+            }
         }
 
-        /* Modernized Christmas Lights - Neon Nodes */
+        /* Christmas Lights - repositioned */
         .lights {
             position: fixed;
-            top: 40px;
+            top: 50px;
             left: 50%;
             transform: translateX(-50%);
-            width: 90%;
-            max-width: 700px;
+            width: 80%;
+            max-width: 600px;
             height: 30px;
             display: flex;
-            justify-content: space-between;
+            justify-content: space-around;
             z-index: 2;
-            pointer-events: none;
         }
 
         .light {
-            width: 12px;
-            height: 12px;
+            width: 14px;
+            height: 14px;
             border-radius: 50%;
-            background: white;
-            animation: neonBlink 2s infinite alternate;
+            animation: blink 1.5s infinite;
         }
 
-        .light:nth-child(odd) { animation-delay: 0s; color: var(--neon-red); }
-        .light:nth-child(even) { animation-delay: 1s; color: var(--neon-green); }
+        .light:nth-child(1) { background: #ff0000; animation-delay: 0s; }
+        .light:nth-child(2) { background: #00ff00; animation-delay: 0.3s; }
+        .light:nth-child(3) { background: #0000ff; animation-delay: 0.6s; }
+        .light:nth-child(4) { background: #ffff00; animation-delay: 0.9s; }
+        .light:nth-child(5) { background: #ff00ff; animation-delay: 1.2s; }
+        .light:nth-child(6) { background: #00ffff; animation-delay: 0.15s; }
+        .light:nth-child(7) { background: #ff8800; animation-delay: 0.45s; }
+        .light:nth-child(8) { background: #ff0088; animation-delay: 0.75s; }
 
-        @keyframes neonBlink {
-            0% { box-shadow: 0 0 5px currentColor, 0 0 10px currentColor; opacity: 0.5; }
-            100% { box-shadow: 0 0 20px currentColor, 0 0 40px currentColor; opacity: 1; }
+        @keyframes blink {
+            0%, 100% { opacity: 1; box-shadow: 0 0 15px currentColor; }
+            50% { opacity: 0.3; box-shadow: none; }
         }
 
-        /* Modern Glassmorphism Container */
+        /* Container - hidden by default */
         .container {
-            /* 2025 Style: Deep frosted glass */
-            background: var(--glass-bg);
-            backdrop-filter: blur(30px) saturate(1.2);
-            -webkit-backdrop-filter: blur(30px) saturate(1.2);
-            padding: 50px 40px;
-            border-radius: 30px;
-            /* Brighter top border for 3D effect */
-            border: 1px solid var(--glass-border);
-            border-top: 2px solid rgba(255, 255, 255, 0.3);
-            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.8), inset 0 0 20px rgba(255, 255, 255, 0.05);
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(15px);
+            padding: 40px;
+            border-radius: 25px;
+            box-shadow: 0 25px 70px rgba(0, 0, 0, 0.5);
             max-width: 550px;
             margin: 80px auto 20px;
             text-align: center;
+            border: 4px solid #c41e3a;
             position: relative;
             z-index: 10;
             opacity: 0;
             visibility: hidden;
-            transform: translateY(30px) scale(0.95);
-            transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+            transform: translateY(-50px);
+            transition: all 0.8s ease-out;
         }
 
         .container.visible {
             opacity: 1;
             visibility: visible;
-            transform: translateY(0) scale(1);
+            transform: translateY(0);
         }
 
-        /* Neon Ornaments decorations */
+        /* Christmas decorations - static */
         .container::before {
             content: '🎄';
             position: absolute;
-            top: -35px;
-            left: 20px;
-            font-size: 3.5em;
-            /* Neon glow filter instead of drop shadow */
-            filter: drop-shadow(0 0 15px var(--neon-green));
+            top: -25px;
+            left: 25px;
+            font-size: 3em;
+            filter: drop-shadow(0 4px 12px rgba(22, 91, 51, 0.6));
         }
 
         .container::after {
             content: '🎅';
             position: absolute;
-            top: -35px;
-            right: 20px;
-            font-size: 3.5em;
-            filter: drop-shadow(0 0 15px var(--neon-red));
+            top: -25px;
+            right: 25px;
+            font-size: 3em;
+            filter: drop-shadow(0 4px 12px rgba(196, 30, 58, 0.6));
         }
 
-        /* Modern Typography */
         h1 {
-            font-size: 2.8em;
-            font-weight: 800;
+            background: linear-gradient(45deg, #c41e3a, #165b33, #c41e3a);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
             margin-bottom: 15px;
-            color: white;
-            /* Neon text shadow */
-            text-shadow: 0 0 10px var(--neon-red), 0 0 20px var(--neon-red), 0 0 40px var(--neon-red);
-            letter-spacing: 1px;
+            font-size: 2.5em;
+            animation: shine 3s linear infinite;
+            font-weight: bold;
+        }
+
+        @keyframes shine {
+            to { background-position: 200% center; }
         }
 
         .subtitle {
-            color: var(--neon-blue);
-            margin-bottom: 35px;
-            font-size: 1.2em;
-            font-weight: 500;
-            text-shadow: 0 0 5px rgba(4, 217, 255, 0.5);
-            letter-spacing: 0.5px;
+            color: #c41e3a;
+            margin-bottom: 30px;
+            font-size: 1.1em;
+            font-weight: 600;
         }
 
         .input-group {
-            margin-bottom: 30px;
+            margin-bottom: 25px;
             position: relative;
         }
 
-        /* Futuristic Input Field */
         input[type="text"] {
             width: 100%;
-            padding: 20px;
-            font-size: 1.3em;
-            /* Dark transparent background */
-            background: rgba(0, 0, 0, 0.3);
-            border: 2px solid rgba(255, 255, 255, 0.2);
-            border-radius: 15px;
+            padding: 18px;
+            font-size: 1.2em;
+            border: 3px solid #165b33;
+            border-radius: 12px;
             text-align: center;
             text-transform: uppercase;
-            color: var(--neon-gold);
-            font-weight: 700;
-            letter-spacing: 3px;
-            transition: all 0.4s ease;
-        }
-
-        input[type="text"]::placeholder {
-            color: rgba(255, 255, 255, 0.4);
-            font-weight: normal;
+            transition: all 0.3s;
+            background: white;
+            font-weight: 600;
+            letter-spacing: 2px;
         }
 
         input[type="text"]:focus {
             outline: none;
-            border-color: var(--neon-green);
-            background: rgba(0, 0, 0, 0.5);
-            box-shadow: 0 0 30px rgba(57, 255, 20, 0.3), inset 0 0 10px rgba(57, 255, 20, 0.1);
+            border-color: #c41e3a;
+            box-shadow: 0 0 25px rgba(196, 30, 58, 0.4);
             transform: scale(1.02);
         }
 
-        /* Modern Gradient Button */
         button {
             width: 100%;
-            padding: 20px;
-            font-size: 1.4em;
-            /* Modern gradient */
-            background: linear-gradient(135deg, var(--neon-red), #ff073a, #9900ff);
-            background-size: 200% auto;
+            padding: 18px;
+            font-size: 1.3em;
+            background: linear-gradient(135deg, #c41e3a 0%, #165b33 100%);
             color: white;
             border: none;
-            border-radius: 15px;
+            border-radius: 12px;
             cursor: pointer;
-            transition: all 0.4s ease;
-            font-weight: 800;
+            transition: all 0.3s;
+            font-weight: bold;
             text-transform: uppercase;
-            letter-spacing: 2px;
-            box-shadow: 0 10px 30px -10px rgba(255, 7, 58, 0.6);
+            position: relative;
+            overflow: hidden;
+            letter-spacing: 1px;
+        }
+
+        button::before {
+            content: '✨';
+            position: absolute;
+            left: -20px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.5em;
+            transition: all 0.5s;
         }
 
         button:hover {
-            background-position: right center;
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px -10px rgba(255, 7, 58, 0.8), 0 0 20px var(--neon-red);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(196, 30, 58, 0.6);
+        }
+
+        button:hover::before {
+            left: 50%;
+            transform: translate(-50%, -50%) scale(1.5);
+            opacity: 0;
         }
 
         button:active {
-            transform: translateY(-2px);
+            transform: translateY(0);
         }
 
-        /* Modernized Results */
         .result {
-            margin-top: 35px;
-            padding: 30px;
-            border-radius: 20px;
+            margin-top: 30px;
+            padding: 25px;
+            border-radius: 15px;
             display: none;
-            backdrop-filter: blur(10px);
-            animation: popInModern 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+            animation: popIn 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
         }
 
-        @keyframes popInModern {
-            0% { transform: scale(0.8) translateY(20px); opacity: 0; }
-            100% { transform: scale(1) translateY(0); opacity: 1; }
+        @keyframes popIn {
+            0% {
+                transform: scale(0);
+                opacity: 0;
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
         }
 
         .result.success {
-            background: rgba(57, 255, 20, 0.15);
-            border: 2px solid var(--neon-green);
-            box-shadow: 0 0 30px rgba(57, 255, 20, 0.2);
+            background: linear-gradient(135deg, #d4edda 0%, #c3e6cb 100%);
+            border: 3px solid #28a745;
+            display: block;
         }
 
         .result.error {
-            background: rgba(255, 7, 58, 0.15);
-            border: 2px solid var(--neon-red);
-            box-shadow: 0 0 30px rgba(255, 7, 58, 0.2);
+            background: linear-gradient(135deg, #f8d7da 0%, #f5c6cb 100%);
+            border: 3px solid #c41e3a;
+            display: block;
         }
 
-        /* Video modal - darker */
+        /* Video modal */
         .video-modal {
             display: none;
             position: fixed;
@@ -303,32 +307,23 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.98);
+            background: rgba(0, 0, 0, 0.95);
             z-index: 9999;
             justify-content: center;
             align-items: center;
-            backdrop-filter: blur(20px);
         }
 
         .video-modal.show {
             display: flex;
-            animation: fadeIn 0.5s ease;
         }
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; }}
 
         .video-container {
             width: 90%;
             max-width: 900px;
-            background: #0a0a0a;
-            border: 1px solid #333;
-            border-radius: 25px;
-            padding: 25px;
-            box-shadow: 0 30px 80px rgba(0, 0, 0, 1);
-        }
-
-        .video-container h2 {
-            color: var(--neon-red);
-            text-shadow: 0 0 10px rgba(255, 7, 58, 0.5);
+            background: white;
+            border-radius: 20px;
+            padding: 20px;
+            box-shadow: 0 25px 70px rgba(0, 0, 0, 0.8);
         }
 
         .video-container iframe {
@@ -336,76 +331,64 @@
             height: 500px;
             border-radius: 15px;
             border: none;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
 
         .close-video {
-            background: linear-gradient(45deg, var(--neon-red), #9900ff);
+            background: #c41e3a;
             color: white;
             border: none;
-            padding: 15px 30px;
-            border-radius: 12px;
-            font-size: 1.2em;
+            padding: 12px 30px;
+            border-radius: 10px;
+            font-size: 1.1em;
             font-weight: bold;
             cursor: pointer;
-            margin-top: 20px;
+            margin-top: 15px;
             width: 100%;
             transition: all 0.3s;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            box-shadow: 0 5px 20px rgba(255, 7, 58, 0.4);
         }
 
         .close-video:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(255, 7, 58, 0.6);
+            background: #a01830;
+            transform: translateY(-2px);
         }
 
         .gift-icon {
-            font-size: 5em;
+            font-size: 4.5em;
             margin-bottom: 15px;
-            filter: drop-shadow(0 0 20px var(--neon-gold));
+            filter: drop-shadow(0 5px 15px rgba(196, 30, 58, 0.3));
         }
 
         .gift-text {
-            font-size: 1.5em;
-            color: var(--neon-green);
-            text-shadow: 0 0 10px rgba(57, 255, 20, 0.5);
-            font-weight: 800;
-            margin-top: 15px;
-            line-height: 1.4;
+            font-size: 1.3em;
+            color: #165b33;
+            font-weight: bold;
+            margin-top: 10px;
+            line-height: 1.6;
         }
 
         .error-text {
-            color: var(--neon-red);
-            text-shadow: 0 0 10px rgba(255, 7, 58, 0.5);
+            color: #c41e3a;
             font-weight: bold;
-            font-size: 1.3em;
+            font-size: 1.2em;
         }
 
-        /* Neon Static Ornaments */
+        /* Static ornaments - fixed stacking issue */
         .ornament {
             position: fixed;
-            font-size: 3.5em;
+            font-size: 3em;
             z-index: 5;
-            /* Intense neon glow for 2025 look */
-            filter: drop-shadow(0 0 20px currentColor);
+            filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.3));
             opacity: 0.9;
-            animation: floatStatic 6s ease-in-out infinite;
         }
 
-        @keyframes floatStatic {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-15px); }
-        }
-
-        .ornament:nth-child(1) { top: 12%; left: 8%; color: var(--neon-gold); animation-delay: 0s;}
-        .ornament:nth-child(2) { top: 12%; right: 8%; color: var(--neon-blue); animation-delay: 1.5s;}
-        .ornament:nth-child(3) { bottom: 12%; left: 10%; color: var(--neon-red); animation-delay: 3s;}
-        .ornament:nth-child(4) { bottom: 25%; right: 10%; color: var(--neon-green); animation-delay: 4.5s;}
+        .ornament:nth-child(1) { top: 12%; left: 8%; }
+        .ornament:nth-child(2) { top: 12%; right: 8%; }
+        .ornament:nth-child(3) { bottom: 18%; left: 8%; }
+        .ornament:nth-child(4) { bottom: 18%; right: 8%; }
     </style>
 </head>
 <body>
+    <!-- Scrolling Background Gallery -->
     <div class="bg-gallery">
         <div class="bg-track">
             <img src="https://raw.githubusercontent.com/quangtrinh25/gift-code-christmas/main/images/000002.jpeg" alt="" class="bg-image">
@@ -447,7 +430,7 @@
             <img src="https://raw.githubusercontent.com/quangtrinh25/gift-code-christmas/main/images/44%20(17).jpeg" alt="" class="bg-image">
             <img src="https://raw.githubusercontent.com/quangtrinh25/gift-code-christmas/main/images/44%20(18).jpeg" alt="" class="bg-image">
             <img src="https://raw.githubusercontent.com/quangtrinh25/gift-code-christmas/main/images/44%20(2).jpeg" alt="" class="bg-image">
-            <img src="https://raw.githubusercontent.com/quangtritml25/gift-code-christmas/main/images/44%20(3).jpeg" alt="" class="bg-image">
+            <img src="https://raw.githubusercontent.com/quangtrinh25/gift-code-christmas/main/images/44%20(3).jpeg" alt="" class="bg-image">
             <img src="https://raw.githubusercontent.com/quangtrinh25/gift-code-christmas/main/images/44%20(4).jpeg" alt="" class="bg-image">
             <img src="https://raw.githubusercontent.com/quangtrinh25/gift-code-christmas/main/images/44%20(5).jpeg" alt="" class="bg-image">
             <img src="https://raw.githubusercontent.com/quangtrinh25/gift-code-christmas/main/images/44%20(6).jpeg" alt="" class="bg-image">
@@ -457,6 +440,7 @@
         </div>
     </div>
 
+    <!-- Christmas Lights -->
     <div class="lights">
         <div class="light"></div>
         <div class="light"></div>
@@ -466,33 +450,34 @@
         <div class="light"></div>
         <div class="light"></div>
         <div class="light"></div>
-        <div class="light"></div>
-        <div class="light"></div>
     </div>
 
+    <!-- Static Ornaments -->
     <div class="ornament">🎁</div>
     <div class="ornament">⛄</div>
     <div class="ornament">🔔</div>
     <div class="ornament">⭐</div>
 
+    <!-- Main Container -->
     <div class="container">
-        <h1>🎅 NEO-XMAS CODE 🎄</h1>
-        <p class="subtitle">✨ Enter sequence to materialize gift ✨</p>
+        <h1>🎅 Christmas Gift Code 🎄</h1>
+        <p class="subtitle">✨ Enter your magical code to unwrap your gift! ✨</p>
         
         <div class="input-group">
-            <input type="text" id="codeInput" placeholder="ENTER ACCESS CODE" maxlength="20">
+            <input type="text" id="codeInput" placeholder="ENTER CODE HERE" maxlength="20">
         </div>
         
-        <button onclick="redeemCode()">🚀 INITIATE UNWRAP 🚀</button>
+        <button onclick="redeemCode()">🎁 Unwrap Gift 🎁</button>
         
         <div id="result" class="result"></div>
     </div>
 
+    <!-- Video Modal -->
     <div id="videoModal" class="video-modal">
         <div class="video-container">
-            <h2 style="text-align: center; margin-bottom: 25px; font-size: 1.8em;">🎄 INCOMING TRANSMISSION 🎄</h2>
+            <h2 style="text-align: center; color: #c41e3a; margin-bottom: 20px;">🎄 Watch Your Christmas Message! 🎄</h2>
             <iframe id="videoFrame" src="" allow="autoplay"></iframe>
-            <button class="close-video" onclick="closeVideo()">PROCEED TO REWARD →</button>
+            <button class="close-video" onclick="closeVideo()">Continue to Prize →</button>
         </div>
     </div>
 
@@ -528,52 +513,32 @@
                 this.element.className = 'mini-image';
                 this.element.src = imageUrls[Math.floor(Math.random() * imageUrls.length)];
                 
-                // Random starting position covering the whole screen
-                this.x = Math.random() * (window.innerWidth - 130);
-                this.y = Math.random() * (window.innerHeight - 130);
+                // Random starting position
+                this.x = Math.random() * window.innerWidth;
+                this.y = Math.random() * window.innerHeight;
                 
-                // CHANGE: Much slower velocity for zero gravity feel (was * 3)
-                this.vx = (Math.random() - 0.5) * 1.5;
-                this.vy = (Math.random() - 0.5) * 1.5;
+                // Random velocity (slower speed)
+                this.vx = (Math.random() - 0.5) * 3;
+                this.vy = (Math.random() - 0.5) * 3;
                 
                 // Rotation
                 this.rotation = 0;
-                // CHANGE: Slower rotation
-                this.rotationSpeed = (Math.random() - 0.5) * 2;
+                this.rotationSpeed = (Math.random() - 0.5) * 5;
                 
                 // Bounce damping
-                this.damping = 0.9; // Less damping for longer floating
+                this.damping = 0.8;
                 this.bounces = 0;
-                this.maxBounces = 8; // More bounces before disappearing
+                this.maxBounces = 5;
                 
-                this.opacity = 0; // Start invisible for fade in
-                this.blur = 5;
+                this.opacity = 1;
+                this.blur = 0;
                 
                 this.element.style.left = this.x + 'px';
                 this.element.style.top = this.y + 'px';
                 this.element.style.opacity = this.opacity;
-                this.element.style.filter = `blur(${this.blur}px)`;
                 
                 document.body.appendChild(this.element);
-                this.fadeIn();
-            }
-
-            fadeIn() {
-                let fade InOpacity = 0;
-                const fade = () => {
-                    fade InOpacity += 0.02;
-                    this.blur -= 0.1;
-                    if (fade InOpacity >= 1) {
-                        this.opacity = 1;
-                        this.blur = 0;
-                        this.animate();
-                        return;
-                    }
-                    this.element.style.opacity = fade InOpacity;
-                    this.element.style.filter = `blur(${Math.max(0, this.blur)}px)`;
-                    requestAnimationFrame(fade);
-                };
-                fade();
+                this.animate();
             }
             
             animate() {
@@ -585,14 +550,15 @@
                     this.y += this.vy;
                     this.rotation += this.rotationSpeed;
                     
-                    const width = 130;
-                    const height = 130;
+                    const width = 140;
+                    const height = 140;
                     
-                    // Bounce off walls (using window dimensions to ensure full screen coverage)
+                    // Bounce off walls
                     if (this.x <= 0 || this.x >= window.innerWidth - width) {
                         this.vx *= -this.damping;
                         this.x = this.x <= 0 ? 0 : window.innerWidth - width;
                         this.bounces++;
+                        this.updateBlur();
                     }
                     
                     // Bounce off top/bottom
@@ -600,10 +566,13 @@
                         this.vy *= -this.damping;
                         this.y = this.y <= 0 ? 0 : window.innerHeight - height;
                         this.bounces++;
+                        this.updateBlur();
                     }
                     
                     // Apply styles
                     this.element.style.transform = `translate(${this.x}px, ${this.y}px) rotate(${this.rotation}deg)`;
+                    this.element.style.filter = `blur(${this.blur}px)`;
+                    this.element.style.opacity = this.opacity;
                     
                     // Check if should disappear
                     if (this.bounces >= this.maxBounces) {
@@ -616,12 +585,17 @@
                 requestAnimationFrame(loop);
             }
             
+            updateBlur() {
+                // Increase blur with each bounce
+                this.blur = this.bounces * 2;
+                this.opacity = 1 - (this.bounces / this.maxBounces) * 0.7;
+            }
+            
             fadeOut() {
                 let fadeOpacity = this.opacity;
-                this.blur = 0;
                 const fade = () => {
-                    fadeOpacity -= 0.02; // Slower fade out
-                    this.blur += 0.2;
+                    fadeOpacity -= 0.05;
+                    this.blur += 0.5;
                     
                     if (fadeOpacity <= 0) {
                         this.element.remove();
@@ -641,35 +615,33 @@
             new FlyingImage();
         }
         
-        // CHANGE: Spawn images much slower (was 1000ms)
-        setInterval(createFlyingImage, 3500);
+        // Spawn images regularly
+        setInterval(createFlyingImage, 1000);
         
-        // Create initial batch spread out
-        for(let i = 0; i < 5; i++) {
-            setTimeout(createFlyingImage, i * 800);
+        // Create initial batch
+        for(let i = 0; i < 8; i++) {
+            setTimeout(createFlyingImage, i * 300);
         }
 
-        // Create snowflakes (slower and fewer for zero g feel)
+        // Create snowflakes
         function createSnowflake() {
             const snowflake = document.createElement('div');
             snowflake.classList.add('snowflake');
             snowflake.innerHTML = '❄';
             snowflake.style.left = Math.random() * 100 + '%';
-            // Slower fall speed
-            snowflake.style.animationDuration = Math.random() * 10 + 8 + 's';
-            snowflake.style.opacity = Math.random() * 0.7;
-            snowflake.style.fontSize = Math.random() * 15 + 5 + 'px';
+            snowflake.style.animationDuration = Math.random() * 3 + 2 + 's';
+            snowflake.style.opacity = Math.random();
+            snowflake.style.fontSize = Math.random() * 10 + 10 + 'px';
             document.body.appendChild(snowflake);
 
             setTimeout(() => {
                 snowflake.remove();
-            }, 18000);
+            }, 5000);
         }
 
-        // Slower snowflake creation interval
-        setInterval(createSnowflake, 600);
+        setInterval(createSnowflake, 200);
 
-        // Show container on first tap/click with modern animation
+        // Show container on first tap/click
         let containerShown = false;
         
         document.body.addEventListener('click', function() {
@@ -680,12 +652,12 @@
         }, { once: true });
 
         const gifts = {
-            'GIFT2024': '🎉 $50 Cyber-Credit Added!',
-            'LUCKY777': '🍀 1 Year Premium Neural-Link Sub!',
-            'WINNER01': '🏆 Brand New Quantum Laptop!',
-            'SPECIAL5': '⭐ Luxury Orbital Spa Package!',
-            'MAGIC123': '✨ Weekend Lunar Getaway Trip!',
-            'BONUS999': '🎊 Limited Edition Holographic Watch!'
+            'GIFT2024': '🎉 Congratulations! You won a $50 Gift Card!',
+            'LUCKY777': '🍀 Amazing! You won a Premium Subscription for 1 Year!',
+            'WINNER01': '🏆 Fantastic! You won a Brand New Laptop!',
+            'SPECIAL5': '⭐ Awesome! You won a Luxury Spa Package!',
+            'MAGIC123': '✨ Incredible! You won a Weekend Getaway Trip!',
+            'BONUS999': '🎊 Excellent! You won a Designer Watch!'
         };
 
         function redeemCode() {
@@ -695,7 +667,7 @@
             
             if (!code) {
                 result.className = 'result error';
-                result.innerHTML = '<div class="error-text">⚠️ ERROR: INPUT SEQUENCE REQUIRED</div>';
+                result.innerHTML = '<div class="error-text">🎅 Ho Ho Ho! Please enter a code!</div>';
                 return;
             }
             
@@ -705,7 +677,7 @@
                 input.value = '';
             } else {
                 result.className = 'result error';
-                result.innerHTML = '<div class="error-text">❌ ACCESS DENIED: Invalid Sequence. Retry.</div>';
+                result.innerHTML = '<div class="error-text">❌ Invalid code. Try again and believe in Christmas magic! 🎄</div>';
                 input.value = '';
             }
         }
@@ -739,24 +711,21 @@
         }
 
         function createConfetti() {
-            const confettiCount = 60;
-            // Neon style confetti characters
-            const confettiChars = ['⚡', '✨', '🌟', '💠', '🟣', '🔵'];
+            const confettiCount = 50;
+            const confettiChars = ['🎉', '🎊', '⭐', '✨', '🎁'];
             
             for (let i = 0; i < confettiCount; i++) {
                 const confetti = document.createElement('div');
                 confetti.style.position = 'fixed';
                 confetti.style.left = Math.random() * 100 + '%';
                 confetti.style.top = '-20px';
-                confetti.style.fontSize = Math.random() * 25 + 15 + 'px';
+                confetti.style.fontSize = Math.random() * 20 + 20 + 'px';
                 confetti.style.zIndex = '1000';
                 confetti.innerHTML = confettiChars[Math.floor(Math.random() * confettiChars.length)];
-                // Add neon glow to confetti
-                confetti.style.textShadow = '0 0 10px currentColor';
-                confetti.style.animation = `fall ${Math.random() * 3 + 2}s linear forwards`;
+                confetti.style.animation = `fall ${Math.random() * 2 + 2}s linear forwards`;
                 document.body.appendChild(confetti);
                 
-                setTimeout(() => confetti.remove(), 5000);
+                setTimeout(() => confetti.remove(), 4000);
             }
         }
 
