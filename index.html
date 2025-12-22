@@ -1,1 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gift Code Redemption</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            max-width: 500px;
+            width: 100%;
+            text-align: center;
+        }
+
+        h1 {
+            color: #667eea;
+            margin-bottom: 10px;
+            font-size: 2em;
+        }
+
+        .subtitle {
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 0.9em;
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 15px;
+            font-size: 1.1em;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            text-align: center;
+            text-transform: uppercase;
+            transition: border-color 0.3s;
+        }
+
+        input[type="text"]:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        button {
+            width: 100%;
+            padding: 15px;
+            font-size: 1.1em;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            font-weight: bold;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        button:active {
+            transform: translateY(0);
+        }
+
+        .result {
+            margin-top: 30px;
+            padding: 20px;
+            border-radius: 10px;
+            display: none;
+        }
+
+        .result.success {
+            background: #d4edda;
+            border: 2px solid #28a745;
+            display: block;
+        }
+
+        .result.error {
+            background: #f8d7da;
+            border: 2px solid #dc3545;
+            display: block;
+        }
+
+        .gift-icon {
+            font-size: 3em;
+            margin-bottom: 10px;
+        }
+
+        .gift-text {
+            font-size: 1.2em;
+            color: #333;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        .error-text {
+            color: #721c24;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎁 Gift Code</h1>
+        <p class="subtitle">Enter your code to reveal your gift!</p>
+        
+        <div class="input-group">
+            <input type="text" id="codeInput" placeholder="Enter code here" maxlength="20">
+        </div>
+        
+        <button onclick="redeemCode()">Redeem Code</button>
+        
+        <div id="result" class="result"></div>
+    </div>
+
+    <script>
+        const gifts = {
+            'GIFT2024': '🎉 Congratulations! You won a $50 Gift Card!',
+            'LUCKY777': '🍀 Amazing! You won a Premium Subscription for 1 Year!',
+            'WINNER01': '🏆 Fantastic! You won a Brand New Laptop!',
+            'SPECIAL5': '⭐ Awesome! You won a Luxury Spa Package!',
+            'MAGIC123': '✨ Incredible! You won a Weekend Getaway Trip!',
+            'BONUS999': '🎊 Excellent! You won a Designer Watch!'
+        };
+
+        function redeemCode() {
+            const input = document.getElementById('codeInput');
+            const result = document.getElementById('result');
+            const code = input.value.trim().toUpperCase();
+            
+            if (!code) {
+                result.className = 'result error';
+                result.innerHTML = '<div class="error-text">⚠️ Please enter a code!</div>';
+                return;
+            }
+            
+            if (gifts[code]) {
+                result.className = 'result success';
+                result.innerHTML = `
+                    <div class="gift-icon">🎁</div>
+                    <div class="gift-text">${gifts[code]}</div>
+                `;
+            } else {
+                result.className = 'result error';
+                result.innerHTML = '<div class="error-text">❌ Invalid code. Please try again!</div>';
+            }
+            
+            input.value = '';
+        }
+
+        document.getElementById('codeInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                redeemCode();
+            }
+        });
+    </script>
+</body>
+</html>
