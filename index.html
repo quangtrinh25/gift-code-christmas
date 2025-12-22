@@ -36,6 +36,7 @@
             flex-direction: column;
             height: max-content;
             animation: scrollBgVertical 180s linear infinite;
+            will-change: transform;
         }
 
         .bg-image {
@@ -43,6 +44,7 @@
             height: 100vh;
             object-fit: cover;
             flex-shrink: 0;
+            display: block;
         }
 
         @keyframes scrollBgVertical {
@@ -50,7 +52,7 @@
                 transform: translateY(0);
             }
             100% {
-                transform: translateY(-4500vh);
+                transform: translateY(calc(-100vh * 45));
             }
         }
 
