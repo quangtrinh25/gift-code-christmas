@@ -56,32 +56,17 @@
             }
         }
 
-        /* Flying mini images with gravity */
+        /* Flying mini images with physics */
         .mini-image {
             position: fixed;
-            width: 120px;
-            height: 120px;
+            width: 100px;
+            height: 100px;
             object-fit: cover;
-            border-radius: 15px;
-            opacity: 0.8;
+            border-radius: 12px;
             box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
             z-index: 1;
-            animation: flyWithGravity ease-in infinite;
-            will-change: transform;
-        }
-
-        @keyframes flyWithGravity {
-            0% {
-                transform: translateY(-200px) translateX(0) rotate(0deg);
-                opacity: 0;
-            }
-            5% {
-                opacity: 0.8;
-            }
-            100% {
-                transform: translateY(calc(100vh + 200px)) translateX(var(--drift)) rotate(var(--rotation));
-                opacity: 0;
-            }
+            pointer-events: none;
+            transition: filter 0.3s;
         }
 
         /* Dark overlay for better readability */
@@ -387,19 +372,19 @@
             font-size: 1.2em;
         }
 
-        /* Static ornaments - repositioned */
+        /* Static ornaments - fixed stacking issue */
         .ornament {
             position: fixed;
             font-size: 3em;
-            z-index: 1;
+            z-index: 5;
             filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.3));
-            opacity: 0.85;
+            opacity: 0.9;
         }
 
-        .ornament:nth-child(1) { top: 15%; left: 15%; }
-        .ornament:nth-child(2) { top: 25%; right: 12%; }
-        .ornament:nth-child(3) { bottom: 20%; left: 18%; }
-        .ornament:nth-child(4) { bottom: 30%; right: 15%; }
+        .ornament:nth-child(1) { top: 12%; left: 8%; }
+        .ornament:nth-child(2) { top: 12%; right: 8%; }
+        .ornament:nth-child(3) { bottom: 18%; left: 10%; }
+        .ornament:nth-child(4) { bottom: 18%; right: 10%; }
     </style>
 </head>
 <body>
@@ -521,23 +506,122 @@
             'https://raw.githubusercontent.com/quangtrinh25/gift-code-christmas/main/images/000047.jpeg'
         ];
 
-        // Create flying mini images
-        function createFlyingImage() {
-            const img = document.createElement('img');
-            img.className = 'mini-image';
-            img.src = imageUrls[Math.floor(Math.random() * imageUrls.length)];
-            img.style.left = Math.random() * 100 + '%';
-            img.style.animationDuration = (Math.random() * 5 + 8) + 's';
-            img.style.animationDelay = Math.random() * 2 + 's';
-            document.body.appendChild(img);
-
-            setTimeout(() => {
-                img.remove();
-            }, 15000);
+        // Physics-based flying images
+        class FlyingImage {
+            constructor() {
+                this.element = document.createElement('img');
+                this.element.className = 'mini-image';
+                this.element.src = imageUrls[Math.floor(Math.random() * imageUrls.length)];
+                
+                // Random starting position
+                this.x = Math.random() * window.innerWidth;
+                this.y = Math.random() * window.innerHeight;
+                
+                // Random velocity (zero gravity - constant speed)
+                this.vx = (Math.random() - 0.5) * 6;
+                this.vy = (Math.random() - 0.5) * 6;
+                
+                // Rotation
+                this.rotation = 0;
+                this.rotationSpeed = (Math.random() - 0.5) * 5;
+                
+                // Bounce damping
+                this.damping = 0.8;
+                this.bounces = 0;
+                this.maxBounces = 5;
+                
+                this.opacity = 1;
+                this.blur = 0;
+                
+                this.element.style.left = this.x + 'px';
+                this.element.style.top = this.y + 'px';
+                this.element.style.opacity = this.opacity;
+                
+                document.body.appendChild(this.element);
+                this.animate();
+            }
+            
+            animate() {
+                const loop = () => {
+                    if (!this.element.parentNode) return;
+                    
+                    // Update position
+                    this.x += this.vx;
+                    this.y += this.vy;
+                    this.rotation += this.rotationSpeed;
+                    
+                    const width = 100;
+                    const height = 100;
+                    
+                    // Bounce off walls
+                    if (this.x <= 0 || this.x >= window.innerWidth - width) {
+                        this.vx *= -this.damping;
+                        this.x = this.x <= 0 ? 0 : window.innerWidth - width;
+                        this.bounces++;
+                        this.updateBlur();
+                    }
+                    
+                    // Bounce off top/bottom
+                    if (this.y <= 0 || this.y >= window.innerHeight - height) {
+                        this.vy *= -this.damping;
+                        this.y = this.y <= 0 ? 0 : window.innerHeight - height;
+                        this.bounces++;
+                        this.updateBlur();
+                    }
+                    
+                    // Apply styles
+                    this.element.style.transform = `translate(${this.x}px, ${this.y}px) rotate(${this.rotation}deg)`;
+                    this.element.style.filter = `blur(${this.blur}px)`;
+                    this.element.style.opacity = this.opacity;
+                    
+                    // Check if should disappear
+                    if (this.bounces >= this.maxBounces) {
+                        this.fadeOut();
+                    } else {
+                        requestAnimationFrame(loop);
+                    }
+                };
+                
+                requestAnimationFrame(loop);
+            }
+            
+            updateBlur() {
+                // Increase blur with each bounce
+                this.blur = this.bounces * 2;
+                this.opacity = 1 - (this.bounces / this.maxBounces) * 0.7;
+            }
+            
+            fadeOut() {
+                let fadeOpacity = this.opacity;
+                const fade = () => {
+                    fadeOpacity -= 0.05;
+                    this.blur += 0.5;
+                    
+                    if (fadeOpacity <= 0) {
+                        this.element.remove();
+                        return;
+                    }
+                    
+                    this.element.style.opacity = fadeOpacity;
+                    this.element.style.filter = `blur(${this.blur}px)`;
+                    requestAnimationFrame(fade);
+                };
+                fade();
+            }
         }
-
-        // Create flying images continuously
-        setInterval(createFlyingImage, 800);
+        
+        // Create new flying image periodically
+        function createFlyingImage() {
+            new FlyingImage();
+        }
+        
+        // Spawn images regularly
+        setInterval(createFlyingImage, 1000);
+        
+        // Create initial batch
+        for(let i = 0; i < 8; i++) {
+            setTimeout(createFlyingImage, i * 300);
+        }
 
         // Create snowflakes
         function createSnowflake() {
